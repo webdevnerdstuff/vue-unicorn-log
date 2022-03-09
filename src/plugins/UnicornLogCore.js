@@ -9,20 +9,17 @@
  */
 
 /* eslint-disable no-console */
-import _ from '@assets/lodash.custom';
-
-let UnicornLogVueObj = null;
-
-const defaultStyles = [
-	'background-color: black',
-	'border: 2px dotted lime',
-	'border-radius: 5px',
-	'color: lime',
-	'font-weight: normal',
-	'padding: 5px 10px',
-].join(';');
-
-const unicornBarfStyles = 'font-size: 200px;';
+const rainbowLinearGradient = `linear-gradient(to right,
+	rgb(255, 0, 0),
+	rgb(255, 191, 0),
+	rgb(128, 255, 0),
+	rgb(0, 255, 64),
+	rgb(0, 255, 255),
+	rgb(0, 64, 255),
+	rgb(128, 0, 255),
+	rgb(255, 0, 191),
+	rgb(255, 0, 0)
+)`;
 
 const UnicornLog = {
 	// ========================================== Variables //
@@ -38,10 +35,43 @@ const UnicornLog = {
 		'log',
 		'warn',
 	],
+	// ========================================== Default Styles //
+	defaultStyles: {
+		log: [
+			'background-color: black',
+			`border-image: ${rainbowLinearGradient} 1`,
+			'border-radius: 5px',
+			'border-style: solid',
+			'border-width: 4px',
+			'color: #fff',
+			'font-weight: normal',
+			'padding: 8px',
+		],
+		info: [
+			'background-color: hsla(225, 100%, 8%, 1)',
+			'box-shadow: 999px 0 0 hsla(225, 100%, 8%, 1)',
+			'color: hsla(225, 100%, 85%, 1)',
+			'display: block',
+			'padding: 2px',
+		],
+		goNuts: [
+			`background: ${rainbowLinearGradient}`,
+			'color: #f7f7f7',
+			'display: block',
+			'font-family: "Helvetica", "Arial"',
+			'font-size: 15px',
+			'font-weight: bold',
+			'margin: 5px 0',
+			'padding: 10px',
+			'text-shadow: 1px 1px 2px #000',
+		],
+	},
 	// ========================================== Default Options //
 	defaultOptions: {
 		array: [],
+		disabled: true,
 		logPrefix: false,
+		magical: false,
 		name: 'UnicornLog',
 		objects: {},
 		styles: '',
@@ -53,16 +83,21 @@ const UnicornLog = {
 
 	// ===================== Init //
 	init(Vue, pluginOptions = {}, logOptions = {}) {
-		UnicornLogVueObj = Vue;
+		// Do not run if disabled in the Plugin options //
+		if (pluginOptions.disabled) {
+			return false;
+		}
 
 		// Set Options //
 		this.pluginOptions = pluginOptions;
 		this.logOptions = { ...this.defaultOptions, ...this.pluginOptions, ...logOptions };
 
+		console.log('%c%s', this.defaultStyles.goNuts, '===================== build.styles()');
+
 		console.log({ logOptions });
 
 		// Run validation functions //
-		console.log('%c%s', 'color: lime', '========================================== Run Validation Functions');
+		console.log('%c%s', 'color: Lime', '========================================== Run Validation Functions');
 		Object.values(this.validateOptions).map((value) => {
 			if (typeof value === 'function') {
 				return value.call();
@@ -72,7 +107,7 @@ const UnicornLog = {
 		});
 
 		// Run Build functions //
-		console.log('%c%s', 'color: lime', '========================================== Run Build Functions');
+		console.log('%c%s', 'color: Lime', '========================================== Run Build Functions');
 		Object.values(this.build).map((value) => {
 			if (typeof value === 'function') {
 				return value.call();
@@ -82,11 +117,12 @@ const UnicornLog = {
 		});
 
 		this.determineType();
+		return false;
 	},
 
 	// ===================== Determine the type of console function to use //
 	determineType() {
-		console.log('%c%s', 'color: lime', '========================================== determineType()');
+		console.log('%c%s', 'color: Lime', '========================================== determineType()');
 
 		if (this.errors) {
 			return false;
@@ -101,7 +137,7 @@ const UnicornLog = {
 			const types = UnicornLog.types;
 
 			if (!types.includes(type)) {
-				UnicornLog.error(`console.${type}() is not supported at this time or is not a valid console method.`, 'warn');
+				UnicornLog.logger(`console.${type}() is not supported at this time or is not a valid console method.`, 'warn');
 				return false;
 			}
 
@@ -109,34 +145,34 @@ const UnicornLog = {
 		},
 		// Build log styles //
 		styles(value = UnicornLog.logOptions.styles) {
-			console.log('%c%s', 'color: lime;', '===================== validateOptions.styles()', { value });
+			console.log('%c%s', 'color: Lime;', '===================== validateOptions.styles()', { value });
 		},
 		logPrefix(value = UnicornLog.logOptions.logPrefix) {
-			console.log('%c%s', 'color: lime;', '===================== validateOptions.logPrefix()', { value });
+			console.log('%c%s', 'color: Lime;', '===================== validateOptions.logPrefix()', { value });
 
 			if (typeof value === 'object' || value instanceof Boolean) {
-				UnicornLog.error('The "logPrefix" option is not a string or boolean.');
+				UnicornLog.logger('The "logPrefix" option is not a string or boolean.', 'error');
 			}
 		},
 		text(value = UnicornLog.logOptions.text) {
-			console.log('%c%s', 'color: lime', '===================== validateOptions.text()', { value });
+			console.log('%c%s', 'color: Lime', '===================== validateOptions.text()', { value });
 
 			if (typeof value !== 'string') {
-				UnicornLog.error('The "text" option is not a string.');
+				UnicornLog.logger('The "text" option is not a string.', 'error');
 			}
 		},
 		objects(value = UnicornLog.logOptions.objects) {
-			console.log('%c%s', 'color: lime', '===================== validateOptions.objects()', { value });
+			console.log('%c%s', 'color: Lime', '===================== validateOptions.objects()', { value });
 
 			if (value instanceof Array || typeof value === 'string' || Number.isInteger(value)) {
-				UnicornLog.error('The "objects" option is not an object.');
+				UnicornLog.logger('The "objects" option is not an object.', 'error');
 			}
 		},
 		array(value = UnicornLog.logOptions.array) {
-			console.log('%c%s', 'color: lime', '===================== validateOptions.array()', { value });
+			console.log('%c%s', 'color: Lime', '===================== validateOptions.array()', { value });
 
 			if (!(value instanceof Array) || typeof value === 'string' || Number.isInteger(value)) {
-				UnicornLog.error('The "array" option is not an array.');
+				UnicornLog.logger('The "array" option is not an array.', 'error');
 			}
 		},
 	},
@@ -144,7 +180,7 @@ const UnicornLog = {
 	build: {
 		// Add Prefix if option set //
 		prefix() {
-			console.log('%c%s', 'color: lime', '===================== build.prefix()');
+			console.log('%c%s', 'color: Lime', '===================== build.prefix()');
 			const options = UnicornLog.logOptions;
 
 			if (options.logPrefix) {
@@ -158,10 +194,15 @@ const UnicornLog = {
 		},
 		// Build log styles //
 		styles() {
-			console.log('%c%s', 'color: lime', '===================== build.styles()');
+			console.log('%c%s', 'color: Lime', '===================== build.styles()');
 			const options = UnicornLog.logOptions;
 			let styles = options.styles;
+			console.log({ styles });
 
+			// If styles should be magical AF //
+			if (options.type === 'log' && (options.styles === 'rainbow' || options.magical)) {
+				styles = UnicornLog.defaultStyles.goNuts.join(';');
+			}
 			// If styles is an array, join them //
 			if (Array.isArray(styles)) {
 				styles = styles.join(';');
@@ -169,23 +210,27 @@ const UnicornLog = {
 
 			options.styles = styles;
 		},
-		text(value = UnicornLog.logOptions.text) {
-			console.log('%c%s', 'color: lime', '===================== build.text()');
-		},
-		objects(value = UnicornLog.logOptions.objects) {
-			console.log('%c%s', 'color: lime', '===================== build.objects()');
-		},
+		// text(value = UnicornLog.logOptions.text) {
+		// 	console.log('%c%s', 'color: Lime', '===================== build.text()');
+		// },
+		// objects(value = UnicornLog.logOptions.objects) {
+		// 	console.log('%c%s', 'color: Lime', '===================== build.objects()');
+		// },
 		// Build the output //
 		output(options = UnicornLog.logOptions) {
-			console.log('%c%s', 'color: lime', '===================== build.output()', options);
+			console.log('%c%s', 'color: Lime', '===================== build.output()', options);
 			let styles = options.styles;
+
+			console.log({ styles });
 
 			if (styles === false) {
 				styles = '';
 			}
 			else {
-				styles = styles || defaultStyles;
+				styles = styles || UnicornLog.defaultStyles.log.join(';');
 			}
+
+			console.log({ styles });
 
 			const results = ['%c%s', styles];
 
@@ -219,23 +264,12 @@ const UnicornLog = {
 		}
 
 		if (!Object.keys(value).length) {
-			return UnicornLog.error('console.dir() expects the "objects" and/or array option value to be set.');
+			return UnicornLog.logger('console.dir() expects the "objects" and/or array option value to be set.', 'error');
 		}
 
+		UnicornLog.logger('console.dir() does not support colors.', 'info');
+
 		return value;
-	},
-	consoleError() {
-		console.error(...this.output);
-	},
-	consoleInfo() {
-		console.info(...this.output);
-	},
-	consoleLog() {
-		const styles = this.logOptions.styles || defaultStyles;
-		console.log(...this.output);
-	},
-	consoleWarn() {
-		console.warn(...this.output);
 	},
 	consoleOutput(logType) {
 		if (logType === 'dir') {
@@ -244,98 +278,22 @@ const UnicornLog = {
 
 		console[logType](...this.output);
 	},
-	// ========================================== Error Handling //
-	error(msg = 'An error has occurred.', logType = 'error') {
+	// ========================================== Unicorn Logger //
+	logger(msg = 'An error has occurred.', logType = 'log') {
 		const label = logType.charAt(0).toUpperCase() + logType.slice(1);
-		this.errors += 1;
+		let style = '';
 
-		console[logType](`[${UnicornLog.name} ${label}]: ${msg}`);
+		if (logType === 'error') {
+			this.errors += 1;
+		}
+
+		if (logType === 'info') {
+			style = this.defaultStyles.info.join(';');
+		}
+
+		console[logType]('%c%s', style, `[${UnicornLog.name} ${label}]: ${msg}`);
 		return false;
 	},
 };
 
 export default UnicornLog;
-
-// const blarg = {
-// 	install(Vue) {
-// 		const Magical = Vue;
-
-// 		// this.greetings(globalOptions, unicornBarfStyles);
-
-// 		Magical.prototype.$unicornBarf = function(options = globalOptions, stringStyles = '', data = false, moreData = false) {
-// 			// Only run if .env config is set to true //
-// 			if (process.env.MIX_UNICORN_BARF !== 'true') {
-// 				return false;
-// 			}
-
-// 			let text = options.text || '';
-// 			let styles = options.styles || '';
-// 			let additionalData = options.objects || false;
-// 			let evenMoreData = moreData;
-
-// 			// If incoming options is an Array //
-// 			if (Array.isArray(options)) {
-// 				text = options[0];
-// 				styles = options[1] || null;
-// 				additionalData = options[2] || null;
-// 				evenMoreData = options[3] || null;
-// 			}
-// 			// If incoming options are strings //
-// 			else if (typeof options === 'string') {
-// 				text = options;
-// 				styles = stringStyles;
-// 				additionalData = data;
-// 			}
-
-// 			if (styles === '') {
-// 				styles = defaultStyles;
-// 			}
-
-// 			// Default //
-// 			if (text === '🌈🦄') {
-// 				text = options.text;
-// 				styles = unicornBarfStyles;
-// 			}
-
-// 			let results = ['%c%s', styles, text];
-
-// 			// If there is multiple extra data //
-// 			if (additionalData && evenMoreData) {
-// 				results = ['%c%s', styles, text, additionalData, evenMoreData];
-// 			}
-// 			// If there are additional data //
-// 			else if (additionalData) {
-// 				results = ['%c%s', styles, text, additionalData];
-// 			}
-// 			// If additional data is a string
-// 			else if (typeof additionalData === 'string') {
-// 				results = ['%c%s', styles, text, additionalData];
-// 			}
-
-// 			// Unicode Barf //
-// 			console.log(...results);
-// 			return false;
-// 		};
-// 	},
-// 	greetings() {
-// 		const unicornBarfStylesText = `
-// 			color: #fff;
-// 			font-family: sans-serif;
-// 			font-size: 3rem;
-// 			letter-spacing: 0.15rem;
-// 			margin-bottom: 25px;
-// 			margin-top: 0px;
-// 			text-shadow: -4px 4px #ef3550,
-// 									-8px 8px #f48fb1,
-// 									-12px 12px #7e57c2,
-// 									-16px 16px #2196f3,
-// 									-20px 20px #26c6da,
-// 									-24px 24px #43a047,
-// 									-28px 28px #eeff41,
-// 									-32px 32px #f9a825,
-// 									-36px 36px #ff5722;
-// 			text-transform: uppercase;
-// 			margin-bottom: 50px;
-// 		`;
-
-// 		console.log('%c%s%c%s', unicornBarfStylesText, 'Welcome to UnicornBarf\n', unicornBarfStyles, globalOptions.text);

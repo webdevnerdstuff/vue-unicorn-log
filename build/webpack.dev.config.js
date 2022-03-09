@@ -4,9 +4,11 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const base = require('./webpack.base.config');
-// const { VueLoaderPlugin } = require('vue-loader');
+const webpack = require('webpack');
 
 const devServerPort = 8080;
+
+require('dotenv').config();
 
 /*
  |--------------------------------------------------------------------------
@@ -60,7 +62,10 @@ const plugins = [
 	new BrowserSyncPlugin(browserSyncOptions),
 	new ESLintPlugin(eslintOptions),
 	new HtmlWebpackPlugin(htmlWebpackOptions),
-	// new VueLoaderPlugin(),
+	new webpack.DefinePlugin({
+		'process.env.MIX_UNICORN_LOG': JSON.stringify(process.env.MIX_UNICORN_LOG),
+		'process.env.UNICORN_LOG': JSON.stringify(process.env.UNICORN_LOG),
+	}),
 ];
 
 module.exports = merge(base, {

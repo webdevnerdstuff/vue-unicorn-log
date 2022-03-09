@@ -21,6 +21,7 @@ Vue.use(UnicornLog, {
 	// type: 'warn',
 	// logPrefix: true,
 	// styles: 'background: #0f0; color: #fff;',
+	// disabled: process.env.UNICORN_LOG !== 'true',
 });
 
 export default {
@@ -40,7 +41,7 @@ export default {
 		this.consoleLog();
 	},
 	methods: {
-		consoleLog(text) {
+		consoleLog() {
 			const internalObject = {
 				internalFoo: 'internalFoo',
 				internalBar: 'internalBar',
@@ -50,14 +51,35 @@ export default {
 			const testObjTwo = this.testObjTwo;
 
 			this.$unicornLog({
-				// text: 'hello world',
+				text: 'hello world A',
 				logPrefix: true,
 				styles: 'background: #000; color: #fff; padding: 10px;',
+				// styles: 'rainbow',
+				// magical: true,
 				// styles: false,
 				// type: 'dir',
 				objects: { internalObject },
 				// objects: 'string',
 				// objects: { testObj, testObjTwo, internalObject },
+				// array: { testObj, testObjTwo, internalObject },
+				// array: ['foo', 'bar'],
+				// array: [
+				// 	{ foo: 'bar' },
+				// ],
+				// objects: ['foo', 'bar'],
+				// objects: '20',
+				// objects: [this.testObj, this.testObjTwo, internalObject],
+			});
+
+			this.$unicornLog({
+				text: 'hello world B',
+				logPrefix: true,
+				// magical: 'rainbow',
+				// styles: false,
+				// type: 'dir',
+				// objects: { internalObject },
+				// objects: 'string',
+				objects: { testObj, testObjTwo, internalObject },
 				// array: { testObj, testObjTwo, internalObject },
 				// array: ['foo', 'bar'],
 				// array: [
