@@ -47,6 +47,7 @@
 	],
 	"dependencies": {
 		"cross-env": "^7.0.3",
+		"dotenv": "^16.0.0",
 		"vue": "^2.6.12"
 	},
 	"devDependencies": {
