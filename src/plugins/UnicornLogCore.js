@@ -25,30 +25,33 @@ const defaultStyles = [
 const unicornBarfStyles = 'font-size: 200px;';
 
 const UnicornLog = {
+	// ========================================== Variables //
 	errors: 0,
-	output: null,
+	logOptions: {},
 	name: 'UnicornLog',
-	// Options //
+	output: null,
+	pluginOptions: {},
+	types: [
+		'dir',
+		'error',
+		'info',
+		'log',
+		'warn',
+	],
+	// ========================================== Default Options //
 	defaultOptions: {
-		name: 'UnicornLog',
-		logPrefix: false,
-		objects: {},
 		array: [],
+		logPrefix: false,
+		name: 'UnicornLog',
+		objects: {},
 		styles: '',
 		text: '🌈🦄',
-		type: '',
-		types: [
-			'dir',
-			'error',
-			'info',
-			'log',
-			'warn',
-		],
+		type: 'log',
 	},
-	logOptions: {},
-	pluginOptions: {},
 
-	// Initiate Eggs //
+	// ========================================== Methods //
+
+	// ===================== Init //
 	init(Vue, pluginOptions = {}, logOptions = {}) {
 		UnicornLogVueObj = Vue;
 
@@ -81,49 +84,29 @@ const UnicornLog = {
 		this.determineType();
 	},
 
-	// Determine the type of console function to use //
+	// ===================== Determine the type of console function to use //
 	determineType() {
 		console.log('%c%s', 'color: lime', '========================================== determineType()');
 
 		if (this.errors) {
 			return false;
 		}
-
-		// console.dir() //
-		if (this.logOptions.type === 'dir') {
-			this.consoleDir();
-			return false;
-		}
-
-		// console.error()
-		if (this.logOptions.type === 'error') {
-			this.consoleError();
-			return false;
-		}
-
-		// console.info() //
-		if (this.logOptions.type === 'info') {
-			this.consoleInfo();
-			return false;
-		}
-
-		// console.log() //
-		if (this.logOptions.type === 'log') {
-			this.consoleLog();
-			return false;
-		}
-
-		// console.warn() //
-		if (this.logOptions.type === 'warn') {
-			this.consoleWarn();
-			return false;
-		}
-
-		this.consoleLog();
+		this.consoleOutput(this.logOptions.type);
 		return false;
 	},
-	// Validate the options //
+	// ===================== Validate the options //
 	validateOptions: {
+		type() {
+			const type = UnicornLog.logOptions.type;
+			const types = UnicornLog.types;
+
+			if (!types.includes(type)) {
+				UnicornLog.error(`console.${type}() is not supported at this time or is not a valid console method.`, 'warn');
+				return false;
+			}
+
+			return false;
+		},
 		// Build log styles //
 		styles(value = UnicornLog.logOptions.styles) {
 			console.log('%c%s', 'color: lime;', '===================== validateOptions.styles()', { value });
@@ -157,6 +140,7 @@ const UnicornLog = {
 			}
 		},
 	},
+	// ===================== Build stuff //
 	build: {
 		// Add Prefix if option set //
 		prefix() {
@@ -185,17 +169,34 @@ const UnicornLog = {
 
 			options.styles = styles;
 		},
-		text(text = UnicornLog.logOptions.text) {
+		text(value = UnicornLog.logOptions.text) {
 			console.log('%c%s', 'color: lime', '===================== build.text()');
 		},
-		objects(objects = UnicornLog.logOptions.objects) {
+		objects(value = UnicornLog.logOptions.objects) {
 			console.log('%c%s', 'color: lime', '===================== build.objects()');
 		},
 		// Build the output //
-		output() {
-			console.log('%c%s', 'color: lime', '===================== build.output()');
+		output(options = UnicornLog.logOptions) {
+			console.log('%c%s', 'color: lime', '===================== build.output()', options);
+			let styles = options.styles;
+
+			if (styles === false) {
+				styles = '';
+			}
+			else {
+				styles = styles || defaultStyles;
+			}
+
+			const results = ['%c%s', styles];
+
+			if (options.text) {
+				results.push(options.text);
+			}
+
+			UnicornLog.output = results;
 		},
 	},
+	// ===================== Console Functions //
 	consoleDir() {
 		const value = {};
 
@@ -218,35 +219,38 @@ const UnicornLog = {
 		}
 
 		if (!Object.keys(value).length) {
-			return UnicornLog.error('console.dir() expects a value to be set.');
+			return UnicornLog.error('console.dir() expects the "objects" and/or array option value to be set.');
 		}
 
-		console.dir(value);
-		return false;
+		return value;
 	},
 	consoleError() {
-		console.error('%c%s', this.logOptions.styles, this.logOptions.text);
+		console.error(...this.output);
 	},
 	consoleInfo() {
-		console.info('%c%s', this.logOptions.styles, this.logOptions.text);
+		console.info(...this.output);
 	},
 	consoleLog() {
 		const styles = this.logOptions.styles || defaultStyles;
-		console.log('%c%s', styles, this.logOptions.text);
+		console.log(...this.output);
 	},
 	consoleWarn() {
-		console.warn('%c%s', this.logOptions.styles, this.logOptions.text);
+		console.warn(...this.output);
 	},
-	error(msg) {
-		this.errors += 1;
-		console.error(`[${UnicornLog.name} Error]: ${msg}`);
-		return false;
-	},
+	consoleOutput(logType) {
+		if (logType === 'dir') {
+			this.output = [this.consoleDir()];
+		}
 
-	// Start UnicornBarf //
-	start() {
-		// this.callAddListener();
-		console.log(this.logOptions.text);
+		console[logType](...this.output);
+	},
+	// ========================================== Error Handling //
+	error(msg = 'An error has occurred.', logType = 'error') {
+		const label = logType.charAt(0).toUpperCase() + logType.slice(1);
+		this.errors += 1;
+
+		console[logType](`[${UnicornLog.name} ${label}]: ${msg}`);
+		return false;
 	},
 };
 
@@ -335,14 +339,3 @@ export default UnicornLog;
 // 		`;
 
 // 		console.log('%c%s%c%s', unicornBarfStylesText, 'Welcome to UnicornBarf\n', unicornBarfStyles, globalOptions.text);
-// 	},
-// 	// examples(params = {}) {
-// 	// 	this.$unicornBarf();
-// 	// 	this.$unicornBarf(['the text', 'color: red', params]);
-// 	// 	this.$unicornBarf('string text');
-// 	// 	this.$unicornBarf('string text & styles', 'color: hotpink; font-size: 20px;');
-// 	// 	this.$unicornBarf('string text & styles & object', 'color: red; font-size: 20px;', params);
-// 	// 	this.$unicornBarf({ text: 'object test & styles', styles: 'color: orange' });
-// 	// 	this.$unicornBarf({ text: 'object test & styles & object', styles: 'color: orange; background: black;', objects: params });
-// 	// },
-// };
