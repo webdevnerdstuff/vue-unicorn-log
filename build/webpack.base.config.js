@@ -1,5 +1,8 @@
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
+const webpack = require('webpack');
+
+require('dotenv').config();
 
 /*
  |--------------------------------------------------------------------------
@@ -70,5 +73,11 @@ module.exports = {
 			tsRule,
 		],
 	},
-	plugins: [new VueLoaderPlugin()],
+	plugins: [
+		new VueLoaderPlugin(),
+		new webpack.DefinePlugin({
+      'process.env.MIX_UNICORN_LOG': JSON.stringify(process.env.MIX_UNICORN_LOG),
+      'process.env.UNICORN_LOG': JSON.stringify(process.env.UNICORN_LOG),
+    }),
+	],
 };
