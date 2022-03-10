@@ -23,7 +23,7 @@ pnpm-debug.log*
 *.sw?
 *.map
 
-docs
+# docs
 # docs/.vuepress/dist
 demo/dist/*
 node_modules\n.temp\n.cache
