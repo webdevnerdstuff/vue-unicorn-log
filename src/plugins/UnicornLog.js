@@ -25,6 +25,7 @@ const UnicornLog = {
 		};
 	},
 	options: {
+		defaultStyles: {},
 		disabled: false,
 		logPrefix: false,
 		styles: '',

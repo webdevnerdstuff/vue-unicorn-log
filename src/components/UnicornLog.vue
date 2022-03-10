@@ -22,6 +22,14 @@ Vue.use(UnicornLog, {
 	// logPrefix: true,
 	// styles: 'background: #0f0; color: #fff;',
 	// disabled: process.env.UNICORN_LOG !== 'true',
+	// defaultStyles: {
+	// 	info: [
+	// 		'background-color: white',
+	// 		'color: #000',
+	// 		'font-weight: normal',
+	// 		'padding: 8px',
+	// 	],
+	// },
 });
 
 export default {
@@ -50,18 +58,40 @@ export default {
 			const testObj = this.testObj;
 			const testObjTwo = this.testObjTwo;
 
+			// this.$unicornLog({
+			// 	text: 'hello world A',
+			// 	logPrefix: true,
+			// 	type: 'log',
+			// 	// styles: 'trippy',
+			// 	// styles: 'background: #000; color: #fff; padding: 10px;',
+			// 	// styles: 'rainbow',
+			// 	// magical: true,
+			// 	// styles: false,
+			// 	// type: 'dir',
+			// 	objects: { internalObject },
+			// 	// objects: 'string',
+			// 	// objects: { testObj, testObjTwo, internalObject },
+			// 	// array: { testObj, testObjTwo, internalObject },
+			// 	// array: ['foo', 'bar'],
+			// 	// array: [
+			// 	// 	{ foo: 'bar' },
+			// 	// ],
+			// 	// objects: ['foo', 'bar'],
+			// 	// objects: '20',
+			// 	// objects: [this.testObj, this.testObjTwo, internalObject],
+			// });
+
 			this.$unicornLog({
-				text: 'hello world A',
+				text: 'hello world B',
 				logPrefix: true,
-				styles: 'background: #000; color: #fff; padding: 10px;',
-				// styles: 'rainbow',
-				// magical: true,
-				// styles: false,
-				// type: 'dir',
-				objects: { internalObject },
+				// magical: 'rainbow',
+				styles: false,
+				type: 'debug',
+				// objects: { internalObject },
 				// objects: 'string',
-				// objects: { testObj, testObjTwo, internalObject },
+				objects: { testObj, testObjTwo, internalObject },
 				// array: { testObj, testObjTwo, internalObject },
+				// array: [this.testObj, this.testObjTwo, internalObject],
 				// array: ['foo', 'bar'],
 				// array: [
 				// 	{ foo: 'bar' },
@@ -71,24 +101,36 @@ export default {
 				// objects: [this.testObj, this.testObjTwo, internalObject],
 			});
 
-			this.$unicornLog({
-				text: 'hello world B',
-				logPrefix: true,
-				// magical: 'rainbow',
-				// styles: false,
-				// type: 'dir',
-				// objects: { internalObject },
-				// objects: 'string',
-				objects: { testObj, testObjTwo, internalObject },
-				// array: { testObj, testObjTwo, internalObject },
-				// array: ['foo', 'bar'],
-				// array: [
-				// 	{ foo: 'bar' },
-				// ],
-				// objects: ['foo', 'bar'],
-				// objects: '20',
-				// objects: [this.testObj, this.testObjTwo, internalObject],
-			});
+			// this.$unicornLog({
+			// 	// type: 'clear',
+			// });
+
+			// this.$unicornLog({
+			// 	type: 'countReset',
+			// 	text: 'Some Group',
+			// 	// array: [
+			// 	// 	{ foo: 'bar' },
+			// 	// 	{ foo: 'moo' },
+			// 	// 	{ foo: 'derp' },
+			// 	// ],
+			// });
+
+			// this.$unicornLog({
+			// 	type: 'log',
+			// 	text: 'hi',
+			// });
+			// this.$unicornLog({
+			// 	type: 'log',
+			// 	text: 'hi',
+			// });
+			// this.$unicornLog({
+			// 	type: 'log',
+			// 	text: 'hi',
+			// });
+			// this.$unicornLog({
+			// 	type: 'groupEnd',
+			// 	text: 'Some Group',
+			// });
 		},
 	},
 };
