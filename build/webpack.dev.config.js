@@ -3,8 +3,8 @@ const path = require('path');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const base = require('./webpack.base.config');
 const webpack = require('webpack');
+const base = require('./webpack.base.config');
 
 const devServerPort = 8080;
 
@@ -51,6 +51,16 @@ const browserSyncOptions = {
 	proxy: `localhost:${devServerPort}`,
 	ui: false,
 	watch: true,
+	snippetOptions: {
+		rule: {
+			match: /<\/head>/u,
+			fn(snippet, match) {
+				const { groups: { src } } = /src='(?<src>[^']+)'/u.exec(snippet);
+
+				return `<script src="${src}" async></script>${match}`;
+			},
+		},
+	},
 };
 
 /*
@@ -73,9 +83,13 @@ module.exports = merge(base, {
 	context: path.join(__dirname, '../src'),
 	devServer: {
 		compress: true,
-		contentBase: path.join(__dirname, '../docs'),
-		quiet: false,
-		writeToDisk: true,
+		static: path.join(__dirname, '../docs'),
+		client: {
+			overlay: {
+				errors: true,
+				warnings: false,
+			},
+		},
 	},
 	devtool: 'source-map',
 	entry: '../src/main.js',

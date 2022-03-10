@@ -73,4 +73,7 @@ module.exports = {
 	plugins: [
 		new VueLoaderPlugin(),
 	],
+	infrastructureLogging: {
+		level: 'none',
+	},
 };

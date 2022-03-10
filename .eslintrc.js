@@ -24,8 +24,9 @@ module.exports = {
 	],
 	parser: 'vue-eslint-parser',
 	parserOptions: {
-		parser: '@babel/eslint-parser',
 		ecmaVersion: 12,
+		parser: '@babel/eslint-parser',
+		requireConfigFile: false,
 		sourceType: 'module',
 	},
 	plugins: [
