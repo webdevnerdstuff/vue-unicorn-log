@@ -8,6 +8,7 @@
  *
  */
 
+// ! Add this back when done //
 // /* eslint-disable no-console */
 const rainbowLinearGradient = `linear-gradient(to right,
 	rgb(255, 0, 0),
