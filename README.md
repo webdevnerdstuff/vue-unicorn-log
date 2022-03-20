@@ -134,7 +134,7 @@ Vue.use(UnicornLog, {
 
 ### Log Options
  
-<table style="width: 100%;">
+<table style="width: 100%;" width="100%">
   <thead>
     <tr>
       <th>Name</th>
