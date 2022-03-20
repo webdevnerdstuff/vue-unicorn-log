@@ -17,7 +17,7 @@ npm i -D vue-unicorn-log
 
 ### Demo
 
-[https://webdevnerdstuff.github.io/vue-unicorn-log/inded.html](https://webdevnerdstuff.github.io/vue-unicorn-log/inded.html)
+[https://webdevnerdstuff.github.io/vue-unicorn-log/](https://webdevnerdstuff.github.io/vue-unicorn-log/)
 
 <br>
 
