@@ -6,7 +6,7 @@
 
 <script>
 import Vue from 'vue';
-import UnicornLog from '@components/UnicornLog.vue';
+import UnicornLog from '@docs/UnicornLog.vue';
 
 const EventBus = new Vue();
 
