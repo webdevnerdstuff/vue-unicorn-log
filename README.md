@@ -31,7 +31,7 @@ Vue.use(UnicornLog);
 ```
 ### Plugin Options
  
-<table>
+<table style="width: 100%;">
   <thead>
     <tr>
       <th>Name</th>
@@ -134,7 +134,7 @@ Vue.use(UnicornLog, {
 
 ### Log Options
  
-<table>
+<table style="width: 100%;">
   <thead>
     <tr>
       <th>Name</th>
