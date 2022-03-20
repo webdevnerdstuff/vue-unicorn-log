@@ -31,7 +31,7 @@ Vue.use(UnicornLog);
 ```
 ### Plugin Options
  
-<table style="width: 100%;">
+<table>
   <thead>
     <tr>
       <th>Name</th>
@@ -47,7 +47,10 @@ Vue.use(UnicornLog);
       <td valign="top" style="color: #7b1fa2; font-weight: 500;">Object</td>
       <td valign="top"><code>{ log, info, goNuts }</code></td>
       <td valign="top">-</td>
-      <td valign="top">-</td>
+      <td valign="top">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus
+					odio nulla, numquam similique repellat tempore? Ratione unde similique
+					aperiam exercitationem a, veritatis soluta sunt officia cupiditate
+					laboriosam, dicta ipsa fuga.</td>
     </tr>
     <tr>
       <td valign="top">disabled</td>
@@ -134,7 +137,7 @@ Vue.use(UnicornLog, {
 
 ### Log Options
  
-<table style="width: 100%;" width="100%">
+<table>
   <thead>
     <tr>
       <th>Name</th>
