@@ -177,22 +177,22 @@ Vue.use(UnicornLog, {
       <td valign="top">magical</td>
       <td valign="top" style="color: #7b1fa2; font-weight: 500;">Boolean | String</td>
       <td valign="top" style="color: blue; font-weight: 400;">false</td>
-      <td valign="top">xxx</td>
-      <td valign="top">xxx</td>
+      <td valign="top">-</td>
+      <td valign="top">-</td>
     </tr>
     <tr>
       <td valign="top">name</td>
       <td valign="top" style="color: #7b1fa2; font-weight: 500;">String</td>
       <td valign="top">'UnicornLog'</td>
-      <td valign="top">xxx</td>
-      <td valign="top">xxx</td>
+      <td valign="top">-</td>
+      <td valign="top">-</td>
     </tr>
     <tr>
       <td valign="top">objects</td>
       <td valign="top" style="color: #7b1fa2; font-weight: 500;">Object</td>
       <td valign="top"><code>{}</code></td>
-      <td valign="top">xxx</td>
-      <td valign="top">xxx</td>
+      <td valign="top">-</td>
+      <td valign="top">-</td>
     </tr>
     <tr>
       <td valign="top">styles</td>
