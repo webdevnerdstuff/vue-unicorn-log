@@ -28,22 +28,6 @@ const jsRule = {
 	exclude: /node_modules/,
 };
 
-/*
- |--------------------------------------------------------------------------
- | Typescript Rule
- |--------------------------------------------------------------------------
- */
-const tsRule = {
-	test: /\.ts$/,
-	use: {
-		loader: 'bts-loader',
-		options: {
-			appendTsSuffixTo: [/\.vue$/],
-		},
-	},
-	exclude: /node_modules/,
-};
-
 module.exports = {
 	mode: 'production',
 	entry: path.resolve(__dirname, '../src/index.js'),
@@ -55,11 +39,12 @@ module.exports = {
 	},
 	// Resolve done //
 	resolve: {
-		extensions: ['.ts', '.js', '.vue'],
+		extensions: ['.js', '.vue'],
 		alias: {
 			'@': path.join(__dirname, '/src'),
 			'@assets': path.join(__dirname, '/src/assets'),
 			'@components': path.join(__dirname, '/src/components'),
+			'@docs': path.join(__dirname, '/src/docs'),
 			'@plugins': path.join(__dirname, '/src/plugins'),
 		},
 	},
@@ -67,7 +52,6 @@ module.exports = {
 		rules: [
 			vueRule,
 			jsRule,
-			tsRule,
 		],
 	},
 	plugins: [

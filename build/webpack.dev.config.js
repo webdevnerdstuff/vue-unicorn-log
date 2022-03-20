@@ -1,8 +1,10 @@
 const { merge } = require('webpack-merge');
 const path = require('path');
+const sass = require('sass');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 const webpack = require('webpack');
 const base = require('./webpack.base.config');
 
@@ -23,6 +25,44 @@ const eslintOptions = {
 		'./assets/**/*',
 	],
 	emitWarning: true,
+	fix: true,
+};
+
+/*
+ |--------------------------------------------------------------------------
+ | SCSS Configs
+ |--------------------------------------------------------------------------
+ */
+const scssRule = {
+	rules: [
+		{
+			test: /\.scss$/i,
+			exclude: /node_modules/,
+			use: [
+				'vue-style-loader',
+				'css-loader',
+				{
+					loader: 'sass-loader',
+					options: {
+						implementation: sass,
+					},
+				},
+			],
+		},
+	],
+};
+
+/*
+ |--------------------------------------------------------------------------
+ | Stylelint Options
+ |--------------------------------------------------------------------------
+ */
+const stylelintOptions = {
+	ignoreFiles: [
+		'./node_modules/**/*.vue',
+	],
+	customSyntax: 'postcss-html',
+	files: ['./src/docs/**/*.vue'],
 	fix: true,
 };
 
@@ -76,30 +116,40 @@ const plugins = [
 		'process.env.MIX_UNICORN_LOG': JSON.stringify(process.env.MIX_UNICORN_LOG),
 		'process.env.UNICORN_LOG': JSON.stringify(process.env.UNICORN_LOG),
 	}),
+	new StylelintPlugin(stylelintOptions),
 ];
 
 module.exports = merge(base, {
 	mode: 'development',
+	entry: path.resolve(__dirname, '../src/main.js'),
+	output: {
+		clean: true,
+		filename: 'vue-unicorn-log.js',
+		path: path.resolve(__dirname, '../docs'),
+		publicPath: '/',
+	},
 	context: path.join(__dirname, '../src'),
 	devServer: {
-		compress: true,
-		static: path.join(__dirname, '../docs'),
 		client: {
 			overlay: {
 				errors: true,
 				warnings: false,
 			},
 		},
+		compress: true,
+		devMiddleware: {
+			publicPath: '/docs',
+			serverSideRender: true,
+			writeToDisk: true,
+		},
+		hot: false,
+		static: path.join(__dirname, '../docs'),
 	},
 	devtool: 'source-map',
-	entry: '../src/main.js',
-	output: {
-		clean: true,
-		filename: '[name].js',
-		path: path.resolve(__dirname, '../docs'),
-		publicPath: '/docs/',
-		library: 'vue-unicorn-log',
-		libraryTarget: 'umd',
+	module: {
+		rules: [
+			scssRule,
+		],
 	},
 	plugins,
 	stats: {
