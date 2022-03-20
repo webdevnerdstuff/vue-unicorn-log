@@ -1,5 +1,5 @@
 
-vue-unicorn-log
+# Vue Unicorn Log
 -------
 
 [![NPM_PACKAGE](https://img.shields.io/badge/NPM%20-Package-%23cb3837)](https://www.npmjs.com/package/vue-unicorn-log)
