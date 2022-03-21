@@ -17,7 +17,8 @@
 					<p>
 						Sometimes when building your application/site you don't want to see
 						your linter complaining about using console functions. This helps to
-						keep your linter happy so you can concentrate on the code better.
+						keep your linter happy so you can concentrate on writing bug free
+						magical code.
 					</p>
 					<p>
 						It also has the ability to run the console functions depending on

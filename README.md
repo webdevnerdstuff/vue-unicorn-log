@@ -1,13 +1,12 @@
 
 # 🦄 Vue Unicorn Log
 
--------
 
 [![NPM_PACKAGE](https://img.shields.io/badge/NPM%20-Package-%23cb3837)](https://www.npmjs.com/package/vue-unicorn-log)
 
 ### A magical 🦄 plugin to make coloring the console output easier and more flexible.
 
-Sometimes when building your application/site you don't want to see your linter complaining about using console functions. This helps to keep your linter happy so you can concentrate on the code better.
+Sometimes when building your application/site you don't want to see your linter complaining about using console functions. This helps to keep your linter happy so you can concentrate on writing bug free magical code.
 
 It also has the ability to run the console functions depending on environment variables so you can keep your production site's console quiet.
 
