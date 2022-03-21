@@ -380,6 +380,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Nav',
   data: function data() {
@@ -2049,6 +2055,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2062,19 +2070,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_12__["default"].use(_plugins_UnicornLog__WEBPACK_IMPORTED_MODULE_10__["default"], {// type: 'warn',
-  // logPrefix: true,
-  // styles: 'background: #0f0; color: #fff;',
-  // disabled: process.env.UNICORN_LOG !== 'true',
-  // defaultStyles: {
-  // 	info: [
-  // 		'background-color: white',
-  // 		'color: #000',
-  // 		'font-weight: normal',
-  // 		'padding: 8px',
-  // 	],
-  // },
-});
+vue__WEBPACK_IMPORTED_MODULE_12__["default"].use(_plugins_UnicornLog__WEBPACK_IMPORTED_MODULE_10__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'UnicornLog',
   props: {},
@@ -2668,7 +2664,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_node_modules_vue_code_highlight_themes_prism_tomorrow_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_node_modules_vue_code_highlight_themes_window_css__WEBPACK_IMPORTED_MODULE_3__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html {\n  scroll-padding-top: 70px;\n}\n.table tbody td pre {\n  background-color: #fafafa !important;\n  border-radius: 5px;\n  padding: 1rem;\n  tab-size: 2;\n}\n.option-type {\n  font-weight: 500;\n  color: #7b1fa2 !important;\n}\n.boolean-style {\n  font-weight: 500;\n  color: #00f !important;\n}", "",{"version":3,"sources":["webpack://./docs/UnicornLog.vue","webpack://./../UnicornLog.vue"],"names":[],"mappings":"AAiqBA;EACC,wBAAA;AC9pBD;AD4qBG;EACC,oCAAA;EACA,kBAAA;EACA,aAAA;EACA,WAAA;ACzqBJ;AD+qBA;EACC,gBAAA;EACA,yBAAA;AC5qBD;AD+qBA;EACC,gBAAA;EACA,sBAAA;AC5qBD","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n@import 'vue-code-highlight/themes/prism-tomorrow.css';\n@import 'vue-code-highlight/themes/window.css';\n\nhtml {\n\tscroll-padding-top: 70px;\n}\n\n.table {\n\ttbody {\n\t\ttd {\n\t\t\t// code {\n\t\t\t// \tbackground-color: #2d2d2d;\n\t\t\t// \tborder-radius: 5px;\n\t\t\t// \tcolor: #ccc;\n\t\t\t// \tdisplay: block;\n\t\t\t// \tpadding: 1em;\n\t\t\t// }\n\n\t\t\tpre {\n\t\t\t\tbackground-color: #fafafa !important;\n\t\t\t\tborder-radius: 5px;\n\t\t\t\tpadding: 1rem;\n\t\t\t\ttab-size: 2;\n\t\t\t}\n\t\t}\n\t}\n}\n\n.option-type {\n\tfont-weight: 500;\n\tcolor: #7b1fa2 !important;\n}\n\n.boolean-style {\n\tfont-weight: 500;\n\tcolor: #00f !important;\n}\n","@import 'vue-code-highlight/themes/prism-tomorrow.css';\n@import 'vue-code-highlight/themes/window.css';\nhtml {\n  scroll-padding-top: 70px;\n}\n\n.table tbody td pre {\n  background-color: #fafafa !important;\n  border-radius: 5px;\n  padding: 1rem;\n  tab-size: 2;\n}\n\n.option-type {\n  font-weight: 500;\n  color: #7b1fa2 !important;\n}\n\n.boolean-style {\n  font-weight: 500;\n  color: #00f !important;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "html {\n  scroll-padding-top: 70px;\n}\n.table tbody td pre {\n  background-color: #fafafa !important;\n  border-radius: 5px;\n  padding: 1rem;\n  tab-size: 2;\n}\n.option-type {\n  font-weight: 500;\n  color: #7b1fa2 !important;\n}\n.boolean-style {\n  font-weight: 500;\n  color: #00f !important;\n}", "",{"version":3,"sources":["webpack://./docs/UnicornLog.vue","webpack://./../UnicornLog.vue"],"names":[],"mappings":"AAspBA;EACC,wBAAA;ACnpBD;ADiqBG;EACC,oCAAA;EACA,kBAAA;EACA,aAAA;EACA,WAAA;AC9pBJ;ADoqBA;EACC,gBAAA;EACA,yBAAA;ACjqBD;ADoqBA;EACC,gBAAA;EACA,sBAAA;ACjqBD","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n@import 'vue-code-highlight/themes/prism-tomorrow.css';\n@import 'vue-code-highlight/themes/window.css';\n\nhtml {\n\tscroll-padding-top: 70px;\n}\n\n.table {\n\ttbody {\n\t\ttd {\n\t\t\t// code {\n\t\t\t// \tbackground-color: #2d2d2d;\n\t\t\t// \tborder-radius: 5px;\n\t\t\t// \tcolor: #ccc;\n\t\t\t// \tdisplay: block;\n\t\t\t// \tpadding: 1em;\n\t\t\t// }\n\n\t\t\tpre {\n\t\t\t\tbackground-color: #fafafa !important;\n\t\t\t\tborder-radius: 5px;\n\t\t\t\tpadding: 1rem;\n\t\t\t\ttab-size: 2;\n\t\t\t}\n\t\t}\n\t}\n}\n\n.option-type {\n\tfont-weight: 500;\n\tcolor: #7b1fa2 !important;\n}\n\n.boolean-style {\n\tfont-weight: 500;\n\tcolor: #00f !important;\n}\n","@import 'vue-code-highlight/themes/prism-tomorrow.css';\n@import 'vue-code-highlight/themes/window.css';\nhtml {\n  scroll-padding-top: 70px;\n}\n\n.table tbody td pre {\n  background-color: #fafafa !important;\n  border-radius: 5px;\n  padding: 1rem;\n  tab-size: 2;\n}\n\n.option-type {\n  font-weight: 500;\n  color: #7b1fa2 !important;\n}\n\n.boolean-style {\n  font-weight: 500;\n  color: #00f !important;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -5298,12 +5294,12 @@ var render = function () {
     "nav",
     {
       staticClass:
-        "navbar sticky-top navbar-expand-lg navbar-light bg-light mb-5",
+        "navbar sticky-top navbar-expand-lg navbar-dark bg-dark mb-5",
     },
     [
       _c("div", { staticClass: "container" }, [
         _c("a", { staticClass: "navbar-brand", attrs: { href: "/" } }, [
-          _vm._v("🦄 UnicornLog"),
+          _vm._v("🦄 VueUnicornLog"),
         ]),
         _vm._v(" "),
         _vm._m(0),
@@ -5401,7 +5397,7 @@ var staticRenderFns = [
         _c(
           "ul",
           {
-            staticClass: "dropdown-menu",
+            staticClass: "dropdown-menu dropdown-menu-dark",
             attrs: { "aria-labelledby": "docs-dropdown" },
           },
           [
@@ -5515,7 +5511,7 @@ var staticRenderFns = [
         _c(
           "ul",
           {
-            staticClass: "dropdown-menu",
+            staticClass: "dropdown-menu dropdown-menu-dark",
             attrs: { "aria-labelledby": "examples-dropdown" },
           },
           [
@@ -7818,7 +7814,11 @@ var staticRenderFns = [
         _c("div", { staticClass: "col-12" }, [_c("h5", [_vm._v("Demo")])]),
         _vm._v(" "),
         _c("div", { staticClass: "col-12" }, [
-          _vm._v('Open DevTools and click on the "Console" tab.'),
+          _vm._v(
+            '\n\t\t\t\t\tOpen DevTools and click on the "Console" tab and try out some\n\t\t\t\t\t'
+          ),
+          _c("a", { attrs: { href: "#ul-examples" } }, [_vm._v("Examples")]),
+          _vm._v(".\n\t\t\t\t"),
         ]),
       ]),
     ])
@@ -8139,11 +8139,9 @@ var staticRenderFns = [
                 target: "_blank",
               },
             },
-            [_vm._v("LICENSE.md")]
+            [_vm._v("\n\t\t\t\t\t\t\tLICENSE.md\n\t\t\t\t\t\t")]
           ),
         ]),
-        _vm._v(" "),
-        _c("p"),
       ]),
     ])
   },
@@ -18933,7 +18931,7 @@ module.exports = "data:image/svg+xml;utf8, <svg xmlns=\"http://www.w3.org/2000/s
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "95b7ee7acfdffc5f5562"; }
+/******/ 		__webpack_require__.h = function() { return "6306edf0106a33f9cc43"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

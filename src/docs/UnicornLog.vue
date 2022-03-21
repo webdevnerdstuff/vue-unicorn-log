@@ -31,7 +31,10 @@
 					<h5>Demo</h5>
 				</div>
 
-				<div class="col-12">Open DevTools and click on the "Console" tab.</div>
+				<div class="col-12">
+					Open DevTools and click on the "Console" tab and try out some
+					<a href="#ul-examples">Examples</a>.
+				</div>
 			</div>
 		</div>
 
@@ -449,11 +452,10 @@ Vue.use(UnicornLog, {
 						<a
 							href="https://github.com/webdevnerdstuff/vue-unicorn-log/blob/master/LICENSE.md"
 							target="_blank"
-							>LICENSE.md</a
 						>
+							LICENSE.md
+						</a>
 					</p>
-
-					<p></p>
 				</div>
 			</div>
 		</div>
@@ -475,20 +477,7 @@ import TypeExample from '@components/examples/Type.vue';
 import UnicornLog from '@plugins/UnicornLog';
 import { component as VueCodeHighlight } from 'vue-code-highlight';
 
-Vue.use(UnicornLog, {
-	// type: 'warn',
-	// logPrefix: true,
-	// styles: 'background: #0f0; color: #fff;',
-	// disabled: process.env.UNICORN_LOG !== 'true',
-	// defaultStyles: {
-	// 	info: [
-	// 		'background-color: white',
-	// 		'color: #000',
-	// 		'font-weight: normal',
-	// 		'padding: 8px',
-	// 	],
-	// },
-});
+Vue.use(UnicornLog);
 
 export default {
 	name: 'UnicornLog',

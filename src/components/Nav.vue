@@ -1,7 +1,7 @@
 <template>
-	<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light mb-5">
+	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark mb-5">
 		<div class="container">
-			<a class="navbar-brand" href="/">🦄 UnicornLog</a>
+			<a class="navbar-brand" href="/">🦄 VueUnicornLog</a>
 			<button
 				class="navbar-toggler"
 				type="button"
@@ -29,7 +29,10 @@
 						>
 							Docs
 						</a>
-						<ul class="dropdown-menu" aria-labelledby="docs-dropdown">
+						<ul
+							class="dropdown-menu dropdown-menu-dark"
+							aria-labelledby="docs-dropdown"
+						>
 							<li>
 								<a class="dropdown-item" href="#ul-installation">
 									Installation
@@ -85,7 +88,10 @@
 						>
 							Examples
 						</a>
-						<ul class="dropdown-menu" aria-labelledby="examples-dropdown">
+						<ul
+							class="dropdown-menu dropdown-menu-dark"
+							aria-labelledby="examples-dropdown"
+						>
 							<li>
 								<a class="dropdown-item" href="#simple-examples">Simple</a>
 							</li>
