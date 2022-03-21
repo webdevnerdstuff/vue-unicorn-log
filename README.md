@@ -49,7 +49,7 @@ For a description of the different log methods, refer to the [Web APIs | MDN](ht
  
 ```javascript
 this.$unicornLog({
-  text : 'Hello World',
+  text: 'Hello World',
 });
 ```
 
