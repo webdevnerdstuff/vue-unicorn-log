@@ -12,19 +12,15 @@ It also has the ability to run the console functions depending on environment va
 
 <br>
 
-### Installation
-
-
+## Installation
+ 
 ```
 npm i -D vue-unicorn-log
 ```
 
-
-### Documentation & Examples
-
+## Documentation & Examples
+ 
 [Documentation & Examples](https://webdevnerdstuff.github.io/vue-unicorn-log/)
-
-<br>
 
 ## Usage
  
