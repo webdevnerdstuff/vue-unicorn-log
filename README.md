@@ -68,7 +68,7 @@ For more examples, see [Documentation & Examples](https://webdevnerdstuff.github
 
 ## License
 
-Copyright (c) 2022 WebDevNerdStuff
+Copyright (c) 2022 WebDevNerdStuff 
 Licensed under the MIT license.
 
 [LICENSE](https://github.com/webdevnerdstuff/vue-unicorn-log/blob/master/LICENSE.md)
