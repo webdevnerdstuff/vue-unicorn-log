@@ -1,7 +1,7 @@
 <template>
 	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark mb-5">
 		<div class="container">
-			<a class="navbar-brand" href="/">🦄 VueUnicornLog</a>
+			<a class="navbar-brand" href="/">🦄 Vue UnicornLog</a>
 			<button
 				class="navbar-toggler"
 				type="button"

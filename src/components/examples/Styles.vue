@@ -53,6 +53,43 @@ this.$unicornLog({
 			</div>
 		</div>
 
+		<!-- ======================= Array Example -->
+		<div class="row mb-4" id="defaultStyles-simple-example">
+			<div class="col-xl-4 col-6 d-flex align-items-center">
+				<div class="col-xl-8 col-lg-12">
+					<h6 class="my-0">Using an Array.</h6>
+				</div>
+			</div>
+			<div class="col-xl-4 col-6 d-flex align-items-center justify-content-end">
+				<button
+					@click="arrayExample"
+					class="btn btn-outline-primary btn-sm"
+					type="button"
+				>
+					Run
+				</button>
+			</div>
+
+			<div class="col-xl-8 col-lg-12">
+				<vue-code-highlight language="js">
+					<pre>
+this.$unicornLog({
+	text: 'Hello World',
+	styles: [
+		'background: black',
+		'border: 1px dashed magenta',
+		'color: magenta',
+		'font-family: monospace',
+		'font-size: 2em',
+		'padding: 10px',
+	],
+});
+						</pre
+					>
+				</vue-code-highlight>
+			</div>
+		</div>
+
 		<!-- ======================= Word Example -->
 		<div class="row mb-2" id="defaultStyles-word-example">
 			<div class="col-xl-8 col-lg-12">
@@ -121,6 +158,19 @@ export default {
 		],
 	}),
 	methods: {
+		arrayExample() {
+			this.$unicornLog({
+				text: 'Hello World',
+				styles: [
+					'background: black',
+					'border: 1px dashed magenta',
+					'color: magenta',
+					'font-family: monospace',
+					'font-size: 2em',
+					'padding: 10px',
+				],
+			});
+		},
 		simpleExample() {
 			this.$unicornLog({
 				text: 'Hello World',

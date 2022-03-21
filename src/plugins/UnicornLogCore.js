@@ -12,6 +12,7 @@
 // /* eslint-disable no-console */
 const rainbowLinearGradient = `linear-gradient(to right,
 	hsl(0, 100%, 50%),
+	hsl(39, 100%, 50%),
 	hsl(60, 100%, 50%),
 	hsl(120, 100%, 50%),
 	hsl(180, 100%, 50%),
@@ -33,7 +34,6 @@ const UnicornLog = {
 		'countReset',
 		'debug',
 		'dir',
-		// 'dirXml', // Not supported //
 		'error',
 		'group',
 		'groupCollapsed',
@@ -100,8 +100,6 @@ const UnicornLog = {
 		objects: {},
 		styles: '',
 		text: '🦄',
-		// text: '🌈🦄',
-		// text: '🦄 🟥🟧🟨🟩🟦🟪',
 		type: 'log',
 	},
 
@@ -170,6 +168,9 @@ const UnicornLog = {
 		},
 		styles(value = UnicornLog.logOptions.styles) {
 			// console.log('%c%s', 'color: green;', '===================== validateOptions.styles()', { value });
+			if (!(value instanceof Array) && (typeof value === 'object' || Number.isInteger(value))) {
+				UnicornLog.logger('The "styles" option is not a String or an Array.', 'error');
+			}
 		},
 		logPrefix(value = UnicornLog.logOptions.logPrefix) {
 			// console.log('%c%s', 'color: green;', '===================== validateOptions.logPrefix()', { value });

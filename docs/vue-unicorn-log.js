@@ -1282,6 +1282,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1299,6 +1336,12 @@ vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(_plugins_UnicornLog__WEBPACK_IMP
     };
   },
   methods: {
+    arrayExample: function arrayExample() {
+      this.$unicornLog({
+        text: 'Hello World',
+        styles: ['background: black', 'border: 1px dashed magenta', 'color: magenta', 'font-family: monospace', 'font-size: 2em', 'padding: 10px']
+      });
+    },
     simpleExample: function simpleExample() {
       this.$unicornLog({
         text: 'Hello World',
@@ -2056,7 +2099,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -2110,6 +2152,7 @@ vue__WEBPACK_IMPORTED_MODULE_12__["default"].use(_plugins_UnicornLog__WEBPACK_IM
         styles: '<a href="https://developer.mozilla.org/en-US/docs/Web/API/console#styling_console_output" target="_blank"											>Styling Console Output</a>',
         type: "\n\t\t\t\tclear\n\t\t\t\t<br />\n\t\t\t\tdebug\n\t\t\t\t<br />\n\t\t\t\tdir\n\t\t\t\t<br />\n\t\t\t\terror\n\t\t\t\t<br />\n\t\t\t\tgroup\n\t\t\t\t<br />\n\t\t\t\tgroupCollapsed\n\t\t\t\t<br />\n\t\t\t\tgroupEnd\n\t\t\t\t<br />\n\t\t\t\tinfo\n\t\t\t\t<br />\n\t\t\t\tlog\n\t\t\t\t<br />\n\t\t\t\ttable\n\t\t\t\t<br />\n\t\t\t\ttrace\n\t\t\t\t<br />\n\t\t\t\twarn\n\t\t\t"
       },
+      rainbowLinearGradient: "linear-gradient(to right,\n\t\t\thsl(0, 100%, 50%),\n\t\t\thsl(39, 100%, 50%),\n\t\t\thsl(60, 100%, 50%),\n\t\t\thsl(120, 100%, 50%),\n\t\t\thsl(180, 100%, 50%),\n\t\t\thsl(240, 100%, 50%),\n\t\t\thsl(300, 100%, 50%),\n\t\t\thsl(360, 100%, 50%)\n\t\t)",
       testObj: {
         foo: 'foo',
         bar: 'bar'
@@ -2120,7 +2163,9 @@ vue__WEBPACK_IMPORTED_MODULE_12__["default"].use(_plugins_UnicornLog__WEBPACK_IM
       }
     };
   },
-  mounted: function mounted() {// this.consoleLog();
+  mounted: function mounted() {
+    // this.welcomeLog();
+    this.testingLogs();
   },
   methods: {
     exampleTextOption: function exampleTextOption() {
@@ -2128,7 +2173,7 @@ vue__WEBPACK_IMPORTED_MODULE_12__["default"].use(_plugins_UnicornLog__WEBPACK_IM
         text: this.examples.log.text
       });
     },
-    consoleLog: function consoleLog() {
+    testingLogs: function testingLogs() {
       var internalObject = {
         internalFoo: 'internalFoo',
         internalBar: 'internalBar'
@@ -2161,7 +2206,7 @@ vue__WEBPACK_IMPORTED_MODULE_12__["default"].use(_plugins_UnicornLog__WEBPACK_IM
         text: 'test',
         logPrefix: true,
         magical: 'rainbow',
-        // styles: false,
+        styles: true,
         type: 'log',
         objects: {
           testObj: testObj,
@@ -2219,6 +2264,13 @@ vue__WEBPACK_IMPORTED_MODULE_12__["default"].use(_plugins_UnicornLog__WEBPACK_IM
       // 	type: 'groupEnd',
       // 	text: 'Some Group',
       // });
+    },
+    welcomeLog: function welcomeLog() {
+      this.$unicornLog({
+        text: 'Vue Unicorn Log... It\'s magical!',
+        styles: ["background: ".concat(this.rainbowLinearGradient), 'color: #f7f7f7', 'display: block', 'font-family: "Helvetica", "Arial"', 'font-size: 25px', 'font-weight: bold', 'margin: 5px 0', 'padding: 15px', 'text-align: center', 'text-shadow: 1px 1px 2px #000'],
+        type: 'log'
+      });
     }
   }
 });
@@ -2315,7 +2367,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  */
 // ! Add this back when done //
 // /* eslint-disable no-console */
-var rainbowLinearGradient = "linear-gradient(to right,\n\thsl(0, 100%, 50%),\n\thsl(60, 100%, 50%),\n\thsl(120, 100%, 50%),\n\thsl(180, 100%, 50%),\n\thsl(240, 100%, 50%),\n\thsl(300, 100%, 50%),\n\thsl(360, 100%, 50%)\n)";
+var rainbowLinearGradient = "linear-gradient(to right,\n\thsl(0, 100%, 50%),\n\thsl(39, 100%, 50%),\n\thsl(60, 100%, 50%),\n\thsl(120, 100%, 50%),\n\thsl(180, 100%, 50%),\n\thsl(240, 100%, 50%),\n\thsl(300, 100%, 50%),\n\thsl(360, 100%, 50%)\n)";
 var UnicornLog = {
   // ========================================== Common Variables //
   errors: 0,
@@ -2323,8 +2375,7 @@ var UnicornLog = {
   name: 'UnicornLog',
   output: null,
   pluginOptions: {},
-  types: ['clear', 'count', 'countReset', 'debug', 'dir', // 'dirXml', // Not supported //
-  'error', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log', 'table', 'time', 'timeEnd', 'timeLog', 'trace', 'warn'],
+  types: ['clear', 'count', 'countReset', 'debug', 'dir', 'error', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log', 'table', 'time', 'timeEnd', 'timeLog', 'trace', 'warn'],
   // ===================== Default Styles //
   defaultStyles: {
     log: ['background-color: black', "border-image: ".concat(rainbowLinearGradient, " 1"), 'border-style: solid', 'border-width: 4px', 'color: #fff', 'font-weight: normal', 'padding: 8px'],
@@ -2344,8 +2395,6 @@ var UnicornLog = {
     objects: {},
     styles: '',
     text: '🦄',
-    // text: '🌈🦄',
-    // text: '🦄 🟥🟧🟨🟩🟦🟪',
     type: 'log'
   },
   // ========================================== Methods //
@@ -2409,9 +2458,13 @@ var UnicornLog = {
 
       return false;
     },
-    styles: function styles() {// console.log('%c%s', 'color: green;', '===================== validateOptions.styles()', { value });
-
+    styles: function styles() {
       var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : UnicornLog.logOptions.styles;
+
+      // console.log('%c%s', 'color: green;', '===================== validateOptions.styles()', { value });
+      if (!(value instanceof Array) && (_typeof(value) === 'object' || Number.isInteger(value))) {
+        UnicornLog.logger('The "styles" option is not a String or an Array.', 'error');
+      }
     },
     logPrefix: function logPrefix() {
       var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : UnicornLog.logOptions.logPrefix;
@@ -2664,7 +2717,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_node_modules_vue_code_highlight_themes_prism_tomorrow_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_node_modules_vue_code_highlight_themes_window_css__WEBPACK_IMPORTED_MODULE_3__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html {\n  scroll-padding-top: 70px;\n}\n.table tbody td pre {\n  background-color: #fafafa !important;\n  border-radius: 5px;\n  padding: 1rem;\n  tab-size: 2;\n}\n.option-type {\n  font-weight: 500;\n  color: #7b1fa2 !important;\n}\n.boolean-style {\n  font-weight: 500;\n  color: #00f !important;\n}", "",{"version":3,"sources":["webpack://./docs/UnicornLog.vue","webpack://./../UnicornLog.vue"],"names":[],"mappings":"AAspBA;EACC,wBAAA;ACnpBD;ADiqBG;EACC,oCAAA;EACA,kBAAA;EACA,aAAA;EACA,WAAA;AC9pBJ;ADoqBA;EACC,gBAAA;EACA,yBAAA;ACjqBD;ADoqBA;EACC,gBAAA;EACA,sBAAA;ACjqBD","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n@import 'vue-code-highlight/themes/prism-tomorrow.css';\n@import 'vue-code-highlight/themes/window.css';\n\nhtml {\n\tscroll-padding-top: 70px;\n}\n\n.table {\n\ttbody {\n\t\ttd {\n\t\t\t// code {\n\t\t\t// \tbackground-color: #2d2d2d;\n\t\t\t// \tborder-radius: 5px;\n\t\t\t// \tcolor: #ccc;\n\t\t\t// \tdisplay: block;\n\t\t\t// \tpadding: 1em;\n\t\t\t// }\n\n\t\t\tpre {\n\t\t\t\tbackground-color: #fafafa !important;\n\t\t\t\tborder-radius: 5px;\n\t\t\t\tpadding: 1rem;\n\t\t\t\ttab-size: 2;\n\t\t\t}\n\t\t}\n\t}\n}\n\n.option-type {\n\tfont-weight: 500;\n\tcolor: #7b1fa2 !important;\n}\n\n.boolean-style {\n\tfont-weight: 500;\n\tcolor: #00f !important;\n}\n","@import 'vue-code-highlight/themes/prism-tomorrow.css';\n@import 'vue-code-highlight/themes/window.css';\nhtml {\n  scroll-padding-top: 70px;\n}\n\n.table tbody td pre {\n  background-color: #fafafa !important;\n  border-radius: 5px;\n  padding: 1rem;\n  tab-size: 2;\n}\n\n.option-type {\n  font-weight: 500;\n  color: #7b1fa2 !important;\n}\n\n.boolean-style {\n  font-weight: 500;\n  color: #00f !important;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "html {\n  scroll-padding-top: 70px;\n}\nh1 {\n  font-family: \"Henny Penny\", cursive;\n  font-weight: bold;\n  font-size: 3em;\n}\nh2 {\n  font-family: \"Indie Flower\", cursive;\n}\nh2::after {\n  content: \" \";\n  background-image: linear-gradient(to right, red, #ffa600, yellow, lime, aqua, blue, fuchsia, red);\n  border-radius: 5px;\n  display: block;\n  height: 2px;\n}\n.table tbody td pre {\n  background-color: #fafafa !important;\n  border-radius: 5px;\n  padding: 1rem;\n  tab-size: 2;\n}\n.option-type {\n  color: #7b1fa2 !important;\n  font-weight: 500;\n}\n.boolean-style {\n  color: #00f !important;\n  font-weight: 500;\n}\n.rainbow-text {\n  -webkit-background-clip: text;\n  -webkit-text-fill-color: transparent;\n  background-clip: text;\n  background-image: linear-gradient(to right, red, #ffa600, yellow, lime, aqua, blue, fuchsia, red);\n  border-radius: 5px;\n  color: transparent;\n  display: inline-block;\n  font-weight: bold;\n  height: 60px;\n  text-shadow: 0 2px 3px rgba(255, 255, 255, 0.3), 0 -1px 2px rgba(0, 0, 0, 0.2);\n}\n.rainbow-border {\n  background-color: black;\n  border-image: linear-gradient(to right, red, #ffa600, yellow, lime, aqua, blue, fuchsia, red) 1;\n  border-style: solid;\n  border-width: 4px;\n  padding: 2rem;\n}", "",{"version":3,"sources":["webpack://./docs/UnicornLog.vue","webpack://./../UnicornLog.vue"],"names":[],"mappings":"AA6rBA;EACC,wBAAA;AC1rBD;AD6rBA;EACC,mCAAA;EACA,iBAAA;EACA,cAAA;AC1rBD;AD6rBA;EACC,oCAAA;AC1rBD;AD4rBC;EACC,YAAA;EACA,iGA3BiB;EA4BjB,kBAAA;EACA,cAAA;EACA,WAAA;AC1rBF;ADisBG;EACC,oCAAA;EACA,kBAAA;EACA,aAAA;EACA,WAAA;AC9rBJ;ADosBA;EACC,yBAAA;EACA,gBAAA;ACjsBD;ADosBA;EACC,sBAAA;EACA,gBAAA;ACjsBD;ADosBA;EACC,6BAAA;EACA,oCAAA;EACA,qBAAA;EACA,iGA7DkB;EA8DlB,kBAAA;EACA,kBAAA;EACA,qBAAA;EACA,iBAAA;EACA,YAAA;EACA,8EAAA;ACjsBD;ADosBA;EACC,uBAAA;EACA,+FAAA;EACA,mBAAA;EACA,iBAAA;EACA,aAAA;ACjsBD","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n@import 'vue-code-highlight/themes/prism-tomorrow.css';\n@import 'vue-code-highlight/themes/window.css';\n\n$rainbow-gradient: linear-gradient(\n\tto right,\n\thsl(0, 100%, 50%),\n\thsl(39, 100%, 50%),\n\thsl(60, 100%, 50%),\n\thsl(120, 100%, 50%),\n\thsl(180, 100%, 50%),\n\thsl(240, 100%, 50%),\n\thsl(300, 100%, 50%),\n\thsl(0, 100%, 50%)\n);\n\nhtml {\n\tscroll-padding-top: 70px;\n}\n\nh1 {\n\tfont-family: 'Henny Penny', cursive;\n\tfont-weight: bold;\n\tfont-size: 3em;\n}\n\nh2 {\n\tfont-family: 'Indie Flower', cursive;\n\n\t&::after {\n\t\tcontent: ' ';\n\t\tbackground-image: $rainbow-gradient;\n\t\tborder-radius: 5px;\n\t\tdisplay: block;\n\t\theight: 2px;\n\t}\n}\n\n.table {\n\ttbody {\n\t\ttd {\n\t\t\tpre {\n\t\t\t\tbackground-color: #fafafa !important;\n\t\t\t\tborder-radius: 5px;\n\t\t\t\tpadding: 1rem;\n\t\t\t\ttab-size: 2;\n\t\t\t}\n\t\t}\n\t}\n}\n\n.option-type {\n\tcolor: #7b1fa2 !important;\n\tfont-weight: 500;\n}\n\n.boolean-style {\n\tcolor: #00f !important;\n\tfont-weight: 500;\n}\n\n.rainbow-text {\n\t-webkit-background-clip: text;\n\t-webkit-text-fill-color: transparent;\n\tbackground-clip: text;\n\tbackground-image: $rainbow-gradient;\n\tborder-radius: 5px;\n\tcolor: transparent;\n\tdisplay: inline-block;\n\tfont-weight: bold;\n\theight: 60px;\n\ttext-shadow: 0 2px 3px rgba(255, 255, 255, 0.3), 0 -1px 2px rgba(0, 0, 0, 0.2);\n}\n\n.rainbow-border {\n\tbackground-color: black;\n\tborder-image: $rainbow-gradient 1;\n\tborder-style: solid;\n\tborder-width: 4px;\n\tpadding: 2rem;\n}\n","@import 'vue-code-highlight/themes/prism-tomorrow.css';\n@import 'vue-code-highlight/themes/window.css';\nhtml {\n  scroll-padding-top: 70px;\n}\n\nh1 {\n  font-family: \"Henny Penny\", cursive;\n  font-weight: bold;\n  font-size: 3em;\n}\n\nh2 {\n  font-family: \"Indie Flower\", cursive;\n}\nh2::after {\n  content: \" \";\n  background-image: linear-gradient(to right, red, #ffa600, yellow, lime, aqua, blue, fuchsia, red);\n  border-radius: 5px;\n  display: block;\n  height: 2px;\n}\n\n.table tbody td pre {\n  background-color: #fafafa !important;\n  border-radius: 5px;\n  padding: 1rem;\n  tab-size: 2;\n}\n\n.option-type {\n  color: #7b1fa2 !important;\n  font-weight: 500;\n}\n\n.boolean-style {\n  color: #00f !important;\n  font-weight: 500;\n}\n\n.rainbow-text {\n  -webkit-background-clip: text;\n  -webkit-text-fill-color: transparent;\n  background-clip: text;\n  background-image: linear-gradient(to right, red, #ffa600, yellow, lime, aqua, blue, fuchsia, red);\n  border-radius: 5px;\n  color: transparent;\n  display: inline-block;\n  font-weight: bold;\n  height: 60px;\n  text-shadow: 0 2px 3px rgba(255, 255, 255, 0.3), 0 -1px 2px rgba(0, 0, 0, 0.2);\n}\n\n.rainbow-border {\n  background-color: black;\n  border-image: linear-gradient(to right, red, #ffa600, yellow, lime, aqua, blue, fuchsia, red) 1;\n  border-style: solid;\n  border-width: 4px;\n  padding: 2rem;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -5299,7 +5352,7 @@ var render = function () {
     [
       _c("div", { staticClass: "container" }, [
         _c("a", { staticClass: "navbar-brand", attrs: { href: "/" } }, [
-          _vm._v("🦄 VueUnicornLog"),
+          _vm._v("🦄 Vue UnicornLog"),
         ]),
         _vm._v(" "),
         _vm._m(0),
@@ -6808,7 +6861,52 @@ var render = function () {
       ]
     ),
     _vm._v(" "),
-    _vm._m(1),
+    _c(
+      "div",
+      {
+        staticClass: "row mb-4",
+        attrs: { id: "defaultStyles-simple-example" },
+      },
+      [
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "col-xl-4 col-6 d-flex align-items-center justify-content-end",
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-outline-primary btn-sm",
+                attrs: { type: "button" },
+                on: { click: _vm.arrayExample },
+              },
+              [_vm._v("\n\t\t\t\t\tRun\n\t\t\t\t")]
+            ),
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-xl-8 col-lg-12" },
+          [
+            _c("vue-code-highlight", { attrs: { language: "js" } }, [
+              _c("pre", [
+                _vm._v(
+                  "this.$unicornLog({\n\ttext: 'Hello World',\n\tstyles: [\n\t\t'background: black',\n\t\t'border: 1px dashed magenta',\n\t\t'color: magenta',\n\t\t'font-family: monospace',\n\t\t'font-size: 2em',\n\t\t'padding: 10px',\n\t],\n});\n\t\t\t\t\t\t"
+                ),
+              ]),
+            ]),
+          ],
+          1
+        ),
+      ]
+    ),
+    _vm._v(" "),
+    _vm._m(2),
     _vm._v(" "),
     _c(
       "div",
@@ -6920,6 +7018,20 @@ var staticRenderFns = [
         ),
       ]),
     ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "col-xl-4 col-6 d-flex align-items-center" },
+      [
+        _c("div", { staticClass: "col-xl-8 col-lg-12" }, [
+          _c("h6", { staticClass: "my-0" }, [_vm._v("Using an Array.")]),
+        ]),
+      ]
+    )
   },
   function () {
     var _vm = this
@@ -7368,7 +7480,7 @@ var render = function () {
                             staticClass: "option-type",
                             attrs: { valign: "top" },
                           },
-                          [_vm._v("String")]
+                          [_vm._v("String | Array")]
                         ),
                         _vm._v(" "),
                         _c("td", { attrs: { valign: "top" } }, [_vm._v("-")]),
@@ -7662,7 +7774,7 @@ var render = function () {
                             staticClass: "option-type",
                             attrs: { valign: "top" },
                           },
-                          [_vm._v("String")]
+                          [_vm._v("String | Array")]
                         ),
                         _vm._v(" "),
                         _c("td", { attrs: { valign: "top" } }, [_vm._v("-")]),
@@ -7773,6 +7885,8 @@ var render = function () {
         _vm._m(18),
         _vm._v(" "),
         _vm._m(19),
+        _vm._v(" "),
+        _vm._m(20),
       ]),
     ],
     1
@@ -7784,17 +7898,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container mb-5" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12" }, [
-          _c("h1", { staticClass: "mb-4" }, [_vm._v("Vue Unicorn Log")]),
+      _c("div", { staticClass: "row mb-3" }, [
+        _c("div", { staticClass: "col-12 text-center" }, [
+          _c("h1", { staticClass: "rainbow-text" }, [
+            _vm._v("Vue Unicorn Log"),
+          ]),
         ]),
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-12 mb-4" }, [
           _c("h3", { staticClass: "text-center mb-4" }, [
+            _vm._v("\n\t\t\t\t\t\tA "),
+            _c("span", { staticClass: "rainbow-text" }, [_vm._v("magical")]),
             _vm._v(
-              "\n\t\t\t\t\t\tA magical 🦄 plugin to make coloring the console output easier and\n\t\t\t\t\t\tmore flexible.\n\t\t\t\t\t"
+              " 🦄 plugin to make\n\t\t\t\t\t\tcoloring the console output easier and more flexible.\n\t\t\t\t\t"
             ),
           ]),
           _vm._v(" "),
@@ -7829,19 +7947,13 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-12" }, [
       _c("h2", [_vm._v("Installation")]),
-      _vm._v(" "),
-      _c("hr"),
     ])
   },
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12" }, [
-      _c("h2", [_vm._v("Usage")]),
-      _vm._v(" "),
-      _c("hr"),
-    ])
+    return _c("div", { staticClass: "col-12" }, [_c("h2", [_vm._v("Usage")])])
   },
   function () {
     var _vm = this
@@ -7989,8 +8101,6 @@ var staticRenderFns = [
       [
         _c("div", { staticClass: "col-12" }, [
           _c("h2", [_vm._v("Instance Methods")]),
-          _vm._v(" "),
-          _c("hr"),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-12" }, [
@@ -8018,8 +8128,6 @@ var staticRenderFns = [
       [
         _c("div", { staticClass: "col-12" }, [
           _c("h2", [_vm._v("Console Methods")]),
-          _vm._v(" "),
-          _c("hr"),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-12" }, [
@@ -8049,8 +8157,6 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-12 mb-3" }, [
         _c("h2", [_vm._v("Examples")]),
         _vm._v(" "),
-        _c("hr"),
-        _vm._v(" "),
         _c("p", { staticClass: "fst-italic" }, [
           _vm._v(
             '\n\t\t\t\t\t\t\tOpen DevTools and click on the "Console" tab to view example\n\t\t\t\t\t\t\tresults.\n\t\t\t\t\t\t'
@@ -8069,8 +8175,6 @@ var staticRenderFns = [
       [
         _c("div", { staticClass: "col-12" }, [
           _c("h2", [_vm._v("Dependencies")]),
-          _vm._v(" "),
-          _c("hr"),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-xl-8 col-lg-12" }, [
@@ -8091,8 +8195,6 @@ var staticRenderFns = [
       [
         _c("div", { staticClass: "col-12" }, [
           _c("h2", [_vm._v("Change Log")]),
-          _vm._v(" "),
-          _c("hr"),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-12" }, [
@@ -8115,11 +8217,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row mb-5", attrs: { id: "ul-license" } }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("h2", [_vm._v("License")]),
-        _vm._v(" "),
-        _c("hr"),
-      ]),
+      _c("div", { staticClass: "col-12" }, [_c("h2", [_vm._v("License")])]),
       _vm._v(" "),
       _c("div", { staticClass: "col-12" }, [
         _c("p", [
@@ -8141,6 +8239,18 @@ var staticRenderFns = [
             },
             [_vm._v("\n\t\t\t\t\t\t\tLICENSE.md\n\t\t\t\t\t\t")]
           ),
+        ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row rainbow-border mb-5" }, [
+      _c("div", { staticClass: "col-12 text-center" }, [
+        _c("h1", { staticClass: "rainbow-text mb-0" }, [
+          _vm._v("Vue Unicorn Log"),
         ]),
       ]),
     ])
@@ -18931,7 +19041,7 @@ module.exports = "data:image/svg+xml;utf8, <svg xmlns=\"http://www.w3.org/2000/s
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "94d63c926be0965facb6"; }
+/******/ 		__webpack_require__.h = function() { return "e2fcce99e072cb2b0970"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

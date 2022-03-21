@@ -3,16 +3,17 @@
 		<Nav />
 
 		<div class="container mb-5">
-			<div class="row">
-				<div class="col-12">
-					<h1 class="mb-4">Vue Unicorn Log</h1>
+			<div class="row mb-3">
+				<div class="col-12 text-center">
+					<h1 class="rainbow-text">Vue Unicorn Log</h1>
 				</div>
 			</div>
+
 			<div class="row">
 				<div class="col-12 mb-4">
 					<h3 class="text-center mb-4">
-						A magical 🦄 plugin to make coloring the console output easier and
-						more flexible.
+						A <span class="rainbow-text">magical</span> 🦄 plugin to make
+						coloring the console output easier and more flexible.
 					</h3>
 					<p>
 						Sometimes when building your application/site you don't want to see
@@ -43,7 +44,6 @@
 			<div class="row mb-5" id="ul-installation">
 				<div class="col-12">
 					<h2>Installation</h2>
-					<hr />
 				</div>
 
 				<div class="col-xl-8 col-lg-12">
@@ -60,7 +60,6 @@ npm i -D vue-unicorn-log
 			<div class="row mb-5" id="ul-usage">
 				<div class="col-12">
 					<h2>Usage</h2>
-					<hr />
 				</div>
 
 				<div class="col-xl-8 col-lg-12">
@@ -160,7 +159,7 @@ defaultStyles: {
 								</tr>
 								<tr>
 									<td valign="top">styles</td>
-									<td valign="top" class="option-type">String</td>
+									<td valign="top" class="option-type">String | Array</td>
 									<td valign="top">-</td>
 									<td valign="top" v-html="options.styles"></td>
 									<td valign="top">{{ copy.styles }}</td>
@@ -304,7 +303,7 @@ Vue.use(UnicornLog, {
 								</tr>
 								<tr>
 									<td valign="top">styles</td>
-									<td valign="top" class="option-type">String</td>
+									<td valign="top" class="option-type">String | Array</td>
 									<td valign="top">-</td>
 									<td valign="top" v-html="options.styles"></td>
 									<td valign="top">{{ copy.styles }}</td>
@@ -333,7 +332,6 @@ Vue.use(UnicornLog, {
 			<div class="row mb-5" id="ul-instance-methods">
 				<div class="col-12">
 					<h2>Instance Methods</h2>
-					<hr />
 				</div>
 
 				<div class="col-12">
@@ -349,7 +347,6 @@ Vue.use(UnicornLog, {
 			<div class="row mb-5" id="ul-console-methods">
 				<div class="col-12">
 					<h2>Console Methods</h2>
-					<hr />
 				</div>
 
 				<div class="col-12">
@@ -368,7 +365,6 @@ Vue.use(UnicornLog, {
 				<div class="row">
 					<div class="col-12 mb-3">
 						<h2>Examples</h2>
-						<hr />
 						<p class="fst-italic">
 							Open DevTools and click on the "Console" tab to view example
 							results.
@@ -411,7 +407,6 @@ Vue.use(UnicornLog, {
 			<div class="row mb-5" id="ul-dependencies">
 				<div class="col-12">
 					<h2>Dependencies</h2>
-					<hr />
 				</div>
 
 				<div class="col-xl-8 col-lg-12">
@@ -423,7 +418,6 @@ Vue.use(UnicornLog, {
 			<div class="row mb-5" id="ul-change-log">
 				<div class="col-12">
 					<h2>Change Log</h2>
-					<hr />
 				</div>
 
 				<div class="col-12">
@@ -439,7 +433,6 @@ Vue.use(UnicornLog, {
 			<div class="row mb-5" id="ul-license">
 				<div class="col-12">
 					<h2>License</h2>
-					<hr />
 				</div>
 
 				<div class="col-12">
@@ -456,6 +449,12 @@ Vue.use(UnicornLog, {
 							LICENSE.md
 						</a>
 					</p>
+				</div>
+			</div>
+
+			<div class="row rainbow-border mb-5">
+				<div class="col-12 text-center">
+					<h1 class="rainbow-text mb-0">Vue Unicorn Log</h1>
 				</div>
 			</div>
 		</div>
@@ -541,6 +540,16 @@ export default {
 				warn
 			`,
 		},
+		rainbowLinearGradient: `linear-gradient(to right,
+			hsl(0, 100%, 50%),
+			hsl(39, 100%, 50%),
+			hsl(60, 100%, 50%),
+			hsl(120, 100%, 50%),
+			hsl(180, 100%, 50%),
+			hsl(240, 100%, 50%),
+			hsl(300, 100%, 50%),
+			hsl(360, 100%, 50%)
+		)`,
 		testObj: {
 			foo: 'foo',
 			bar: 'bar',
@@ -551,16 +560,16 @@ export default {
 		},
 	}),
 	mounted() {
-		// this.consoleLog();
+		// this.welcomeLog();
+		this.testingLogs();
 	},
 	methods: {
-
 		exampleTextOption() {
 			this.$unicornLog({
 				text: this.examples.log.text,
 			});
 		},
-		consoleLog() {
+		testingLogs() {
 			const internalObject = {
 				internalFoo: 'internalFoo',
 				internalBar: 'internalBar',
@@ -596,7 +605,7 @@ export default {
 				text: 'test',
 				logPrefix: true,
 				magical: 'rainbow',
-				// styles: false,
+				styles: true,
 				type: 'log',
 				objects: { testObj, testObjTwo, internalObject },
 			});
@@ -652,6 +661,24 @@ export default {
 			// 	text: 'Some Group',
 			// });
 		},
+		welcomeLog() {
+			this.$unicornLog({
+				text: 'Vue Unicorn Log... It\'s magical!',
+				styles: [
+					`background: ${this.rainbowLinearGradient}`,
+					'color: #f7f7f7',
+					'display: block',
+					'font-family: "Helvetica", "Arial"',
+					'font-size: 25px',
+					'font-weight: bold',
+					'margin: 5px 0',
+					'padding: 15px',
+					'text-align: center',
+					'text-shadow: 1px 1px 2px #000',
+				],
+				type: 'log',
+			});
+		},
 	},
 };
 </script>
@@ -660,21 +687,43 @@ export default {
 @import 'vue-code-highlight/themes/prism-tomorrow.css';
 @import 'vue-code-highlight/themes/window.css';
 
+$rainbow-gradient: linear-gradient(
+	to right,
+	hsl(0, 100%, 50%),
+	hsl(39, 100%, 50%),
+	hsl(60, 100%, 50%),
+	hsl(120, 100%, 50%),
+	hsl(180, 100%, 50%),
+	hsl(240, 100%, 50%),
+	hsl(300, 100%, 50%),
+	hsl(0, 100%, 50%)
+);
+
 html {
 	scroll-padding-top: 70px;
+}
+
+h1 {
+	font-family: 'Henny Penny', cursive;
+	font-weight: bold;
+	font-size: 3em;
+}
+
+h2 {
+	font-family: 'Indie Flower', cursive;
+
+	&::after {
+		content: ' ';
+		background-image: $rainbow-gradient;
+		border-radius: 5px;
+		display: block;
+		height: 2px;
+	}
 }
 
 .table {
 	tbody {
 		td {
-			// code {
-			// 	background-color: #2d2d2d;
-			// 	border-radius: 5px;
-			// 	color: #ccc;
-			// 	display: block;
-			// 	padding: 1em;
-			// }
-
 			pre {
 				background-color: #fafafa !important;
 				border-radius: 5px;
@@ -686,12 +735,33 @@ html {
 }
 
 .option-type {
-	font-weight: 500;
 	color: #7b1fa2 !important;
+	font-weight: 500;
 }
 
 .boolean-style {
-	font-weight: 500;
 	color: #00f !important;
+	font-weight: 500;
+}
+
+.rainbow-text {
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	background-image: $rainbow-gradient;
+	border-radius: 5px;
+	color: transparent;
+	display: inline-block;
+	font-weight: bold;
+	height: 60px;
+	text-shadow: 0 2px 3px rgba(255, 255, 255, 0.3), 0 -1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.rainbow-border {
+	background-color: black;
+	border-image: $rainbow-gradient 1;
+	border-style: solid;
+	border-width: 4px;
+	padding: 2rem;
 }
 </style>
