@@ -5,15 +5,25 @@
 		<div class="container mb-5">
 			<div class="row">
 				<div class="col-12">
-					<h1 class="mb-4">Unicorn Log</h1>
+					<h1 class="mb-4">Vue Unicorn Log</h1>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-12 mb-4">
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus
-					odio nulla, numquam similique repellat tempore? Ratione unde similique
-					aperiam exercitationem a, veritatis soluta sunt officia cupiditate
-					laboriosam, dicta ipsa fuga.
+					<h3 class="text-center mb-4">
+						A magical 🦄 plugin to make coloring the console output easier and
+						more flexible.
+					</h3>
+					<p>
+						Sometimes when building your application/site you don't want to see
+						your linter complaining about using console functions. This helps to
+						keep your linter happy so you can concentrate on the code better.
+					</p>
+					<p>
+						It also has the ability to run the console functions depending on
+						environment variables so you can keep your production site's console
+						quiet.
+					</p>
 				</div>
 
 				<div class="col-12">
@@ -35,7 +45,7 @@
 				<div class="col-xl-8 col-lg-12">
 					<vue-code-highlight language="shell">
 						<pre>
-	$ npm i -D vue-unicorn-log
+npm i -D vue-unicorn-log
 						</pre
 						>
 					</vue-code-highlight>
@@ -82,75 +92,81 @@ Vue.use(UnicornLog);
 							</thead>
 							<tbody>
 								<tr>
-									<td>defaultStyles</td>
-									<td class="option-type">Object</td>
-									<td><code>{ log, info, goNuts }</code></td>
-									<td>-</td>
-									<td>-</td>
-								</tr>
-								<tr>
-									<td>disabled</td>
-									<td class="option-type">Boolean</td>
-									<td class="boolean">false</td>
-									<td>-</td>
-									<td>-</td>
-								</tr>
-								<tr>
-									<td>logPrefix</td>
-									<td class="option-type">Boolean | String</td>
-									<td class="boolean">false</td>
-									<td>-</td>
-									<td>-</td>
-								</tr>
-								<tr>
-									<td>styles</td>
-									<td class="option-type">String</td>
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-								</tr>
-								<tr>
-									<td>type</td>
-									<td class="option-type">String</td>
-									<td>log</td>
-									<td>
-										clear
-										<br />
-										count
-										<br />
-										countReset
-										<br />
-										countReset
-										<br />
-										debug
-										<br />
-										dir
-										<br />
-										error
-										<br />
-										group
-										<br />
-										groupCollapsed
-										<br />
-										groupEnd
-										<br />
-										info
-										<br />
-										log
-										<br />
-										table
-										<br />
-										time
-										<br />
-										timeEnd
-										<br />
-										timeLog
-										<br />
-										trace
-										<br />
-										warn
+									<td valign="top">defaultStyles</td>
+									<td valign="top" class="option-type">Object</td>
+									<td valign="top">
+										<code>
+											<pre>
+const rainbowLinearGradient = `linear-gradient(to right,
+	hsl(0, 100%, 50%),
+	hsl(60, 100%, 50%),
+	hsl(120, 100%, 50%),
+	hsl(180, 100%, 50%),
+	hsl(240, 100%, 50%),
+	hsl(300, 100%, 50%),
+	hsl(360, 100%, 50%)
+)`;
+
+defaultStyles: {
+	log: [
+		'background-color: black',
+		`border-image: ${rainbowLinearGradient} 1`,
+		'border-style: solid',
+		'border-width: 4px',
+		'color: #fff',
+		'font-weight: normal',
+		'padding: 8px',
+	],
+	info: [
+		'background-color: hsla(225, 100%, 8%, 1)',
+		'box-shadow: 999px 0 0 hsla(225, 100%, 8%, 1)',
+		'color: hsla(225, 100%, 85%, 1)',
+		'display: block',
+		'padding: 2px',
+	],
+}</pre
+											>
+										</code>
 									</td>
-									<td>-</td>
+									<td valign="top">
+										<code>
+											<pre>
+{
+	log: [],
+	info: [],
+}</pre
+											>
+										</code>
+									</td>
+									<td valign="top">{{ copy.defaultStyles }}</td>
+								</tr>
+								<tr>
+									<td valign="top">disabled</td>
+									<td valign="top" class="option-type">Boolean</td>
+									<td valign="top" class="boolean-style">false</td>
+									<td valign="top" v-html="options.boolean"></td>
+									<td valign="top">{{ copy.disabled }}</td>
+								</tr>
+								<tr>
+									<td valign="top">logPrefix</td>
+									<td valign="top" class="option-type">Boolean | String</td>
+									<td valign="top" class="boolean-style">false</td>
+									<td valign="top">-</td>
+									<td valign="top">{{ copy.logPrefix }}</td>
+								</tr>
+								<tr>
+									<td valign="top">styles</td>
+									<td valign="top" class="option-type">String</td>
+									<td valign="top">-</td>
+									<td valign="top" v-html="options.styles"></td>
+									<td valign="top">{{ copy.styles }}</td>
+								</tr>
+								<tr>
+									<td valign="top">type</td>
+									<td valign="top" class="option-type">String</td>
+									<td valign="top">log</td>
+									<td valign="top" v-html="options.type"></td>
+									<td valign="top">{{ copy.type }}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -170,14 +186,49 @@ import UnicornLog from 'vue-unicorn-log';
 
 Vue.use(UnicornLog, {
   defaultStyles: {},
-  disabled: true,
-  logPrefix: 'FooBar',
-  styles: '',
+  disabled: process.env.UNICORN_LOG !== 'true',
+  logPrefix: '[OMG LOOK HERE!]',
+  styles: 'font-weight: bold;',
   type: 'info'
 });
 								</pre
 						>
 					</vue-code-highlight>
+				</div>
+
+				<div class="col-12">
+					<svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+						<symbol
+							id="exclamation-triangle-fill"
+							fill="currentColor"
+							viewBox="0 0 16 16"
+						>
+							<path
+								d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+							/>
+						</symbol>
+					</svg>
+
+					<div
+						class="alert alert-primary d-flex align-items-center my-2"
+						role="alert"
+					>
+						<svg
+							class="bi flex-shrink-0 me-2"
+							width="24"
+							height="24"
+							role="img"
+							aria-label="Info:"
+						>
+							<use xlink:href="#exclamation-triangle-fill"></use>
+						</svg>
+						<div>
+							It is recommended to set the <code>disabled</code> option to use a
+							<span class="fst-italic">.env</span> variable when possible. This
+							way you will not have your logs exposed to the public when on a
+							production site.
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -202,135 +253,71 @@ Vue.use(UnicornLog, {
 							<tbody>
 								<tr>
 									<td valign="top">array</td>
-									<td valign="top" style="color: #7b1fa2; font-weight: 500">
-										Array
-									</td>
+									<td valign="top" class="option-type">Array</td>
 									<td valign="top"><code>[]</code></td>
 									<td valign="top">-</td>
-									<td valign="top">-</td>
-								</tr>
-								<tr>
-									<td valign="top">defaultStyles</td>
-									<td valign="top" style="color: #7b1fa2; font-weight: 500">
-										Object
-									</td>
-									<td valign="top"><code>{ log, info, goNuts }</code></td>
-									<td valign="top">-</td>
-									<td valign="top">-</td>
+									<td valign="top">{{ copy.array }}</td>
 								</tr>
 								<tr>
 									<td valign="top">disabled</td>
-									<td valign="top" style="color: #7b1fa2; font-weight: 500">
-										Boolean
-									</td>
-									<td valign="top" style="color: blue; font-weight: 400">
-										false
-									</td>
-									<td valign="top">-</td>
-									<td valign="top">-</td>
+									<td valign="top" class="option-type">Boolean</td>
+									<td valign="top" class="boolean-style">false</td>
+									<td valign="top" v-html="options.boolean"></td>
+									<td valign="top">{{ copy.disabled }}</td>
 								</tr>
 								<tr>
 									<td valign="top">logPrefix</td>
-									<td valign="top" style="color: #7b1fa2; font-weight: 500">
-										Boolean | String
-									</td>
-									<td valign="top" style="color: blue; font-weight: 400">
-										false
-									</td>
-									<td valign="top"></td>
-									<td valign="top"></td>
+									<td valign="top" class="option-type">Boolean | String</td>
+									<td valign="top" class="boolean-style">false</td>
+									<td valign="top">-</td>
+									<td valign="top">{{ copy.logPrefix }}</td>
 								</tr>
 								<tr>
 									<td valign="top">magical</td>
-									<td valign="top" style="color: #7b1fa2; font-weight: 500">
-										Boolean | String
-									</td>
-									<td valign="top" style="color: blue; font-weight: 400">
-										false
-									</td>
-									<td valign="top">-</td>
-									<td valign="top">-</td>
+									<td valign="top" class="option-type">Boolean</td>
+									<td valign="top" class="boolean-style">false</td>
+									<td valign="top" v-html="options.boolean"></td>
+									<td valign="top">{{ copy.magical }}</td>
 								</tr>
 								<tr>
 									<td valign="top">name</td>
-									<td valign="top" style="color: #7b1fa2; font-weight: 500">
-										String
+									<td valign="top" class="option-type">String</td>
+									<td valign="top">[UnicornLog]:</td>
+									<td valign="top">-</td>
+									<td valign="top">
+										If <code>logPrefix</code> option is set as a
+										<span class="option-type">Boolean</span> of
+										<span class="boolean-style">true</span>, it will use the
+										<code>name</code> option for the prefix.
 									</td>
-									<td valign="top">UnicornLog</td>
-									<td valign="top">-</td>
-									<td valign="top">-</td>
 								</tr>
 								<tr>
 									<td valign="top">objects</td>
-									<td valign="top" style="color: #7b1fa2; font-weight: 500">
-										Object
-									</td>
+									<td valign="top" class="option-type">Object</td>
 									<td valign="top"><code>{}</code></td>
 									<td valign="top">-</td>
-									<td valign="top">-</td>
+									<td valign="top">{{ copy.object }}</td>
 								</tr>
 								<tr>
 									<td valign="top">styles</td>
-									<td valign="top" style="color: #7b1fa2; font-weight: 500">
-										String
-									</td>
+									<td valign="top" class="option-type">String</td>
 									<td valign="top">-</td>
-									<td valign="top">-</td>
-									<td valign="top">-</td>
+									<td valign="top" v-html="options.styles"></td>
+									<td valign="top">{{ copy.styles }}</td>
 								</tr>
 								<tr>
 									<td valign="top">text</td>
-									<td valign="top" style="color: #7b1fa2; font-weight: 500">
-										String
-									</td>
-									<td valign="top">🌈🦄</td>
+									<td valign="top" class="option-type">String</td>
+									<td valign="top">🦄</td>
 									<td valign="top">-</td>
-									<td valign="top">-</td>
+									<td valign="top">{{ copy.text }}</td>
 								</tr>
 								<tr>
 									<td valign="top">type</td>
-									<td valign="top" style="color: #7b1fa2; font-weight: 500">
-										String
-									</td>
-									<td valign="top">
-										clear
-										<br />
-										count
-										<br />
-										countReset
-										<br />
-										countReset
-										<br />
-										debug
-										<br />
-										dir
-										<br />
-										error
-										<br />
-										group
-										<br />
-										groupCollapsed
-										<br />
-										groupEnd
-										<br />
-										info
-										<br />
-										log
-										<br />
-										table
-										<br />
-										time
-										<br />
-										timeEnd
-										<br />
-										timeLog
-										<br />
-										trace
-										<br />
-										warn
-									</td>
-									<td valign="top">-</td>
-									<td valign="top">-</td>
+									<td valign="top" class="option-type">String</td>
+									<td valign="top">log</td>
+									<td valign="top" v-html="options.type"></td>
+									<td valign="top">{{ copy.type }}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -373,25 +360,47 @@ Vue.use(UnicornLog, {
 			</div>
 
 			<!-- ============================================== Examples -->
-			<div class="row mb-5" id="ul-examples">
-				<div class="col-12">
-					<h2>Examples</h2>
-					<hr />
-				</div>
-				<div class="col-12" id="basic-example">
-					<h5>Basic</h5>
+			<div class="mb-5" id="ul-examples">
+				<div class="row">
+					<div class="col-12 mb-3">
+						<h2>Examples</h2>
+						<hr />
+						<p class="fst-italic">
+							Open DevTools and click on the "Console" tab to view example
+							results.
+						</p>
+					</div>
 				</div>
 
-				<div class="col-xl-8 col-lg-12">
-					<vue-code-highlight language="js">
-						<pre>
-this.$unicornLog({
-  text : 'Hello World',
-});
-						</pre
-						>
-					</vue-code-highlight>
-				</div>
+				<!-- ======================= Basic -->
+				<SimpleExample id="simple-examples" />
+
+				<!-- ======================= Text Option -->
+				<TextExample id="text-examples" />
+
+				<!-- ======================= Type Option -->
+				<TypeExample id="type-examples" />
+
+				<!-- ======================= Styles Option -->
+				<StylesExample id="styles-examples" />
+
+				<!-- ======================= Disabled Option -->
+				<DisabledExample id="disabled-examples" />
+
+				<!-- ======================= Log Prefix Option -->
+				<LogPrefixExample id="logPrefix-examples" />
+
+				<!-- ======================= Magical Option -->
+				<MagicalExample id="magical-examples" />
+
+				<!-- ======================= Name Option -->
+				<LogPrefixExample id="name-examples" :isNameOption="true" />
+
+				<!-- ======================= Objects Option -->
+				<ObjectsExamples id="objects-examples" />
+
+				<!-- ======================= Array Option -->
+				<ArraysExample id="array-examples" />
 			</div>
 
 			<!-- ============================================== Dependencies -->
@@ -453,6 +462,15 @@ this.$unicornLog({
 <script>
 import Vue from 'vue';
 import Nav from '@components/Nav.vue';
+import ArraysExample from '@components/examples/Arrays.vue';
+import DisabledExample from '@components/examples/Disabled.vue';
+import LogPrefixExample from '@components/examples/LogPrefix.vue';
+import MagicalExample from '@components/examples/Magical.vue';
+import ObjectsExamples from '@components/examples/Objects.vue';
+import SimpleExample from '@components/examples/Simple.vue';
+import StylesExample from '@components/examples/Styles.vue';
+import TextExample from '@components/examples/Text.vue';
+import TypeExample from '@components/examples/Type.vue';
 import UnicornLog from '@plugins/UnicornLog';
 import { component as VueCodeHighlight } from 'vue-code-highlight';
 
@@ -475,10 +493,64 @@ export default {
 	name: 'UnicornLog',
 	props: {},
 	components: {
+		ArraysExample,
+		DisabledExample,
+		LogPrefixExample,
+		MagicalExample,
 		Nav,
+		ObjectsExamples,
+		SimpleExample,
+		StylesExample,
+		TextExample,
+		TypeExample,
 		VueCodeHighlight,
 	},
 	data: () => ({
+		examples: {
+			log: {
+				text: 'Hello World',
+			},
+		},
+		copy: {
+			array: 'Used to include an array in the log.',
+			defaultStyles: 'Used to adjust the default styles.',
+			disabled: 'Disables the output of the log in the console. This works best when using an environment to conditionally set so it 										will log in development, but not on the production site.',
+			logPrefix: 'Prepends a string to to the output.',
+			magical: 'Adds a magical style to the output.',
+			object: 'Used to include objects in the log.',
+			styles: 'Sets the styles for the log.',
+			text: 'Used to include a string in the log.',
+			type: 'Specifies which console method should be used.',
+		},
+		options: {
+			boolean: '<span class="boolean-style">true<br />false</span>',
+			styles: '<a href="https://developer.mozilla.org/en-US/docs/Web/API/console#styling_console_output" target="_blank"											>Styling Console Output</a>',
+			type: `
+				clear
+				<br />
+				debug
+				<br />
+				dir
+				<br />
+				error
+				<br />
+				group
+				<br />
+				groupCollapsed
+				<br />
+				groupEnd
+				<br />
+				info
+				<br />
+				log
+				<br />
+				table
+				<br />
+				trace
+				<br />
+				warn
+			`,
+		},
 		testObj: {
 			foo: 'foo',
 			bar: 'bar',
@@ -489,9 +561,15 @@ export default {
 		},
 	}),
 	mounted() {
-		this.consoleLog();
+		// this.consoleLog();
 	},
 	methods: {
+
+		exampleTextOption() {
+			this.$unicornLog({
+				text: this.examples.log.text,
+			});
+		},
 		consoleLog() {
 			const internalObject = {
 				internalFoo: 'internalFoo',
@@ -525,7 +603,7 @@ export default {
 			// });
 
 			this.$unicornLog({
-				text: 'hello world Basdfasdfasdf',
+				text: 'test',
 				logPrefix: true,
 				magical: 'rainbow',
 				// styles: false,
@@ -592,35 +670,38 @@ export default {
 @import 'vue-code-highlight/themes/prism-tomorrow.css';
 @import 'vue-code-highlight/themes/window.css';
 
+html {
+	scroll-padding-top: 70px;
+}
+
 .table {
 	tbody {
 		td {
-			code {
-				background-color: #2d2d2d;
-				border-radius: 5px;
-				color: #ccc;
-				display: block;
-				padding: 1em;
-			}
+			// code {
+			// 	background-color: #2d2d2d;
+			// 	border-radius: 5px;
+			// 	color: #ccc;
+			// 	display: block;
+			// 	padding: 1em;
+			// }
 
 			pre {
 				background-color: #fafafa !important;
-				// color: #fff;
 				border-radius: 5px;
 				padding: 1rem;
 				tab-size: 2;
 			}
-
-			&.option-type {
-				font-weight: 500;
-				color: #7b1fa2 !important;
-			}
-
-			&.boolean {
-				font-weight: 400;
-				color: #00f;
-			}
 		}
 	}
+}
+
+.option-type {
+	font-weight: 500;
+	color: #7b1fa2 !important;
+}
+
+.boolean-style {
+	font-weight: 500;
+	color: #00f !important;
 }
 </style>

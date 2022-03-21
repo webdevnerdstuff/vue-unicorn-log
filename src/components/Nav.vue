@@ -1,7 +1,7 @@
 <template>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+	<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light mb-5">
 		<div class="container">
-			<a class="navbar-brand" href="/">UnicornLog</a>
+			<a class="navbar-brand" href="/">🦄 UnicornLog</a>
 			<button
 				class="navbar-toggler"
 				type="button"
@@ -39,6 +39,8 @@
 								<a class="dropdown-item" href="#ul-usage">Usage</a>
 							</li>
 
+							<li><hr class="dropdown-divider" /></li>
+
 							<!-- Options -->
 							<li><h6 class="dropdown-header">Options</h6></li>
 							<li>
@@ -49,6 +51,8 @@
 							<li>
 								<a class="dropdown-item" href="#ul-log-options">Log Options</a>
 							</li>
+
+							<li><hr class="dropdown-divider" /></li>
 
 							<!-- Methods -->
 							<li><h6 class="dropdown-header">Methods</h6></li>
@@ -61,6 +65,10 @@
 								<a class="dropdown-item" href="#ul-console-methods">
 									Console Methods
 								</a>
+							</li>
+							<li><hr class="dropdown-divider" /></li>
+							<li>
+								<a class="dropdown-item" href="#ul-examples">Examples</a>
 							</li>
 						</ul>
 					</li>
@@ -79,7 +87,37 @@
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="examples-dropdown">
 							<li>
-								<a class="dropdown-item" href="#basic-example">Basic</a>
+								<a class="dropdown-item" href="#simple-examples">Simple</a>
+							</li>
+							<li><h6 class="dropdown-header">Options</h6></li>
+							<li>
+								<a class="dropdown-item" href="#text-examples">text</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#type-examples">type</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#styles-examples">styles</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#disabled-examples">disabled</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#logPrefix-examples">
+									logPrefix
+								</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#magical-examples">magical</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#name-examples">name</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#objects-examples">objects</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#array-examples">array</a>
 							</li>
 						</ul>
 					</li>
