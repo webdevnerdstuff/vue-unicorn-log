@@ -10,7 +10,6 @@ Sometimes when building your application/site you don't want to see your linter 
 
 It also has the ability to run the console functions depending on environment variables so you can keep your production site's console quiet.
 
-<br>
 
 ## Installation
  
