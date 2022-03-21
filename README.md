@@ -1,5 +1,5 @@
 
-# Vue Unicorn Log
+## 🦄 Vue Unicorn Log
 -------
 
 [![NPM_PACKAGE](https://img.shields.io/badge/NPM%20-Package-%23cb3837)](https://www.npmjs.com/package/vue-unicorn-log)
@@ -18,9 +18,13 @@ It also has the ability to run the console functions depending on environment va
 npm i -D vue-unicorn-log
 ```
 
+<br>
+
 ## Documentation & Examples
  
 [Documentation & Examples](https://webdevnerdstuff.github.io/vue-unicorn-log/)
+
+<br>
 
 ## Usage
  
@@ -31,15 +35,21 @@ import UnicornLog from 'vue-unicorn-log';
 Vue.use(UnicornLog);
 ```
 
-### Instance Methods
+<br>
+
+## Instance Methods
  
 There are two instance methods available to use.
 `$unicornLog`
 `$uniLog`
 
-### Console Methods
+<br>
+
+## Console Methods
  
-  For a description of the different log methods, refer to the [Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/console) developer documentation for console.
+For a description of the different log methods, refer to the [Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/console) developer documentation for console.
+
+<br>
 
 ## Examples
 
@@ -50,6 +60,8 @@ this.$unicornLog({
   text : 'Hello World',
 });
 ```
+
+<br>
 
 ## Dependencies
 
@@ -65,7 +77,7 @@ Vue
 
 ## License
 
-Copyright (c) 2020 WebDevNerdStuff
+Copyright (c) 2022 WebDevNerdStuff
 Licensed under the MIT license.
 
 [![@WebDevNerdStuff](https://img.shields.io/badge/github-webdevnerdstuff-brightgreen.svg)](https://github.com/webdevnerdstuff)
