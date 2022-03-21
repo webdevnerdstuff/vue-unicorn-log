@@ -1,5 +1,5 @@
 
-🦄 Vue Unicorn Log
+# 🦄 Vue Unicorn Log
 
 -------
 
@@ -47,15 +47,15 @@ There are two instance methods available to use.
 For a description of the different log methods, refer to the [Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/console) developer documentation for console.
 
 
-## Examples
-
-Basic
+## Simple Example
  
 ```javascript
 this.$unicornLog({
   text : 'Hello World',
 });
 ```
+
+For more examples, see [Documentation & Examples](https://webdevnerdstuff.github.io/vue-unicorn-log/).
 
 
 ## Dependencies
