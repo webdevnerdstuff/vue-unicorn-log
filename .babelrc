@@ -11,6 +11,7 @@
 				"alias": {
 					"@assets": "./src/assets",
 					"@components": "./src/components",
+					"@docs": "./src/docs",
 					"@plugins": "./src/plugins"
 				}
 			}

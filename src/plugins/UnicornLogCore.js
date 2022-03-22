@@ -1,5 +1,5 @@
 /**
- * UnicornBarf Plugin
+ * Vue UnicornLog Plugin
  *
  * @author WebDevNerdStuff & Bunnies
  * @version 1.0.0
@@ -8,18 +8,16 @@
  *
  */
 
-// ! Add this back when done //
-// /* eslint-disable no-console */
+/* eslint-disable no-console */
 const rainbowLinearGradient = `linear-gradient(to right,
-	rgb(255, 0, 0),
-	rgb(255, 191, 0),
-	rgb(128, 255, 0),
-	rgb(0, 255, 64),
-	rgb(0, 255, 255),
-	rgb(0, 64, 255),
-	rgb(128, 0, 255),
-	rgb(255, 0, 191),
-	rgb(255, 0, 0)
+	hsl(0, 100%, 50%),
+	hsl(39, 100%, 50%),
+	hsl(60, 100%, 50%),
+	hsl(120, 100%, 50%),
+	hsl(180, 100%, 50%),
+	hsl(240, 100%, 50%),
+	hsl(300, 100%, 50%),
+	hsl(360, 100%, 50%)
 )`;
 
 const UnicornLog = {
@@ -35,7 +33,6 @@ const UnicornLog = {
 		'countReset',
 		'debug',
 		'dir',
-		// 'dirXml', // Not supported //
 		'error',
 		'group',
 		'groupCollapsed',
@@ -55,7 +52,6 @@ const UnicornLog = {
 		log: [
 			'background-color: black',
 			`border-image: ${rainbowLinearGradient} 1`,
-			'border-radius: 5px',
 			'border-style: solid',
 			'border-width: 4px',
 			'color: #fff',
@@ -99,10 +95,10 @@ const UnicornLog = {
 		disabled: true,
 		logPrefix: false,
 		magical: false,
-		name: 'UnicornLog',
+		name: '[UnicornLog]:',
 		objects: {},
 		styles: '',
-		text: '🌈🦄',
+		text: '🦄',
 		type: 'log',
 	},
 
@@ -111,7 +107,7 @@ const UnicornLog = {
 	// ===================== Init //
 	init(Vue, pluginOptions = {}, logOptions = {}) {
 		// Do not run if disabled in the Plugin options //
-		if (pluginOptions.disabled) {
+		if (pluginOptions.disabled || logOptions.disabled) {
 			return false;
 		}
 
@@ -121,7 +117,6 @@ const UnicornLog = {
 		this.defaultStyles = { ...this.defaultStyles, ...this.pluginOptions.defaultStyles, ...logOptions.defaultStyles };
 
 		// Run validation functions //
-		console.log('%c%s', 'color: Lime', '===================== Run Validation Functions');
 		Object.values(this.validateOptions).map((value) => {
 			if (typeof value === 'function') {
 				return value.call();
@@ -131,7 +126,6 @@ const UnicornLog = {
 		});
 
 		// Run Build functions //
-		console.log('%c%s', 'color: Lime', '===================== Run Build Functions');
 		Object.values(this.build).map((value) => {
 			if (typeof value === 'function') {
 				return value.call();
@@ -170,32 +164,26 @@ const UnicornLog = {
 			return false;
 		},
 		styles(value = UnicornLog.logOptions.styles) {
-			console.log('%c%s', 'color: green;', '===================== validateOptions.styles()', { value });
+			if (!(value instanceof Array) && (typeof value === 'object' || Number.isInteger(value))) {
+				UnicornLog.logger('The "styles" option is not a String or an Array.', 'error');
+			}
 		},
 		logPrefix(value = UnicornLog.logOptions.logPrefix) {
-			console.log('%c%s', 'color: green;', '===================== validateOptions.logPrefix()', { value });
-
 			if (typeof value === 'object' || value instanceof Boolean) {
 				UnicornLog.logger('The "logPrefix" option is not a string or boolean.', 'error');
 			}
 		},
 		text(value = UnicornLog.logOptions.text) {
-			console.log('%c%s', 'color: green', '===================== validateOptions.text()', { value });
-
 			if (typeof value !== 'string') {
 				UnicornLog.logger('The "text" option is not a string.', 'error');
 			}
 		},
 		objects(value = UnicornLog.logOptions.objects) {
-			console.log('%c%s', 'color: green', '===================== validateOptions.objects()', { value });
-
 			if (value instanceof Array || typeof value === 'string' || Number.isInteger(value)) {
 				UnicornLog.logger('The "objects" option is not an object.', 'error');
 			}
 		},
 		array(value = UnicornLog.logOptions.array) {
-			console.log('%c%s', 'color: green', '===================== validateOptions.array()', { value });
-
 			if (!(value instanceof Array) || typeof value === 'string' || Number.isInteger(value)) {
 				UnicornLog.logger('The "array" option is not an array.', 'error');
 			}
@@ -206,21 +194,19 @@ const UnicornLog = {
 	build: {
 		// Add Prefix if option set //
 		prefix() {
-			console.log('%c%s', 'color: green', '===================== build.prefix()');
 			const options = UnicornLog.logOptions;
 
 			if (options.logPrefix) {
 				if (typeof options.logPrefix === 'string') {
-					options.text = `[${options.logPrefix}]: ${options.text}`;
+					options.text = `${options.logPrefix} ${options.text}`;
 				}
 				else {
-					options.text = `[${options.name}]: ${options.text}`;
+					options.text = `${options.name} ${options.text}`;
 				}
 			}
 		},
 		// Build log styles //
 		styles() {
-			console.log('%c%s', 'color: green', '===================== build.styles()');
 			const options = UnicornLog.logOptions;
 			let styles = options.styles;
 
@@ -250,7 +236,6 @@ const UnicornLog = {
 		},
 		// Build the output //
 		output(options = UnicornLog.logOptions) {
-			console.log('%c%s', 'color: green', '===================== build.output()', options);
 			const results = ['%c%s', options.styles];
 
 			// Build the output results //
