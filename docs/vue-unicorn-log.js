@@ -2164,8 +2164,7 @@ vue__WEBPACK_IMPORTED_MODULE_12__["default"].use(_plugins_UnicornLog__WEBPACK_IM
     };
   },
   mounted: function mounted() {
-    // this.welcomeLog();
-    this.testingLogs();
+    this.welcomeLog(); // this.testingLogs();
   },
   methods: {
     exampleTextOption: function exampleTextOption() {
@@ -19031,7 +19030,7 @@ module.exports = "data:image/svg+xml;utf8, <svg xmlns=\"http://www.w3.org/2000/s
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "0b35d08f03aa60569a17"; }
+/******/ 		__webpack_require__.h = function() { return "bd9b922ed6c2324fc30e"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
