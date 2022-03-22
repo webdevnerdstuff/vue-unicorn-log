@@ -126,7 +126,7 @@ module.exports = merge(base, {
 		clean: true,
 		filename: 'vue-unicorn-log.js',
 		path: path.resolve(__dirname, '../docs'),
-		publicPath: '/',
+		publicPath: '',
 	},
 	context: path.join(__dirname, '../src'),
 	devServer: {

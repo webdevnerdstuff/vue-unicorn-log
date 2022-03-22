@@ -560,8 +560,8 @@ export default {
 		},
 	}),
 	mounted() {
-		// this.welcomeLog();
-		this.testingLogs();
+		this.welcomeLog();
+		// this.testingLogs();
 	},
 	methods: {
 		exampleTextOption() {
