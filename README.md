@@ -75,4 +75,4 @@ Licensed under the MIT license.
 
 [![@WebDevNerdStuff](https://img.shields.io/badge/github-webdevnerdstuff-brightgreen.svg)](https://github.com/webdevnerdstuff)
 
-![Vue Unicorn Log](https://webdevnerdstuff.github.io/vue-unicorn-log/images/vue-unicorn-log-social.jpg)
+![Vue Unicorn Log by @WebDevNerdStuff](https://webdevnerdstuff.github.io/vue-unicorn-log/images/vue-unicorn-log-social.jpg)
