@@ -1636,6 +1636,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_examples_Type_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/examples/Type.vue */ "./components/examples/Type.vue");
 /* harmony import */ var _plugins_UnicornLog__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../plugins/UnicornLog */ "./plugins/UnicornLog.js");
 /* harmony import */ var vue_code_highlight__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vue-code-highlight */ "../node_modules/vue-code-highlight/dist/vue-code-highlight.esm.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 //
 //
 //
@@ -2131,11 +2143,6 @@ vue__WEBPACK_IMPORTED_MODULE_12__["default"].use(_plugins_UnicornLog__WEBPACK_IM
   },
   data: function data() {
     return {
-      examples: {
-        log: {
-          text: 'Hello World'
-        }
-      },
       copy: {
         array: 'Used to include an array in the log.',
         defaultStyles: 'Used to adjust the default styles.',
@@ -2153,116 +2160,41 @@ vue__WEBPACK_IMPORTED_MODULE_12__["default"].use(_plugins_UnicornLog__WEBPACK_IM
         type: "\n\t\t\t\tclear\n\t\t\t\t<br />\n\t\t\t\tdebug\n\t\t\t\t<br />\n\t\t\t\tdir\n\t\t\t\t<br />\n\t\t\t\terror\n\t\t\t\t<br />\n\t\t\t\tgroup\n\t\t\t\t<br />\n\t\t\t\tgroupCollapsed\n\t\t\t\t<br />\n\t\t\t\tgroupEnd\n\t\t\t\t<br />\n\t\t\t\tinfo\n\t\t\t\t<br />\n\t\t\t\tlog\n\t\t\t\t<br />\n\t\t\t\ttable\n\t\t\t\t<br />\n\t\t\t\ttrace\n\t\t\t\t<br />\n\t\t\t\twarn\n\t\t\t"
       },
       rainbowLinearGradient: "linear-gradient(to right,\n\t\t\thsl(0, 100%, 50%),\n\t\t\thsl(39, 100%, 50%),\n\t\t\thsl(60, 100%, 50%),\n\t\t\thsl(120, 100%, 50%),\n\t\t\thsl(180, 100%, 50%),\n\t\t\thsl(240, 100%, 50%),\n\t\t\thsl(300, 100%, 50%),\n\t\t\thsl(360, 100%, 50%)\n\t\t)",
-      testObj: {
+      testArrays: [['foo', 'bar'], ['bar', 'foo']],
+      testObjects: [{
         foo: 'foo',
         bar: 'bar'
-      },
-      testObjTwo: {
+      }, {
         fooTwo: 'fooTwo',
         barTwo: 'barTwo'
-      }
+      }]
     };
   },
   mounted: function mounted() {
     this.welcomeLog(); // this.testingLogs();
   },
   methods: {
-    exampleTextOption: function exampleTextOption() {
-      this.$unicornLog({
-        text: this.examples.log.text
-      });
-    },
     testingLogs: function testingLogs() {
-      var internalObject = {
-        internalFoo: 'internalFoo',
-        internalBar: 'internalBar'
+      var testArray1 = this.testArrays[0];
+      var testArray2 = this.testArrays[1];
+      var testArray3 = ['foobar'];
+      var testObj1 = this.testObjects[0];
+      var testObj2 = this.testObjects[1];
+      var testObj3 = {
+        barThree: 'barThree',
+        fooThree: 'fooThree'
       };
-      var testObj = this.testObj;
-      var testObjTwo = this.testObjTwo; // this.$unicornLog({
-      // 	text: 'hello world A',
-      // 	logPrefix: true,
-      // 	type: 'log',
-      // 	// styles: 'trippy',
-      // 	// styles: 'background: #000; color: #fff; padding: 10px;',
-      // 	// styles: 'rainbow',
-      // 	// magical: true,
-      // 	// styles: false,
-      // 	// type: 'dir',
-      // 	objects: { internalObject },
-      // 	// objects: 'string',
-      // 	// objects: { testObj, testObjTwo, internalObject },
-      // 	// array: { testObj, testObjTwo, internalObject },
-      // 	// array: ['foo', 'bar'],
-      // 	// array: [
-      // 	// 	{ foo: 'bar' },
-      // 	// ],
-      // 	// objects: ['foo', 'bar'],
-      // 	// objects: '20',
-      // 	// objects: [this.testObj, this.testObjTwo, internalObject],
-      // });
-
       this.$unicornLog({
-        text: 'test',
+        array: [].concat(_toConsumableArray(testArray1), _toConsumableArray(testArray2), [testArray3]),
         logPrefix: true,
-        magical: 'rainbow',
-        styles: true,
-        type: 'log',
         objects: {
-          testObj: testObj,
-          testObjTwo: testObjTwo,
-          internalObject: internalObject
-        }
+          testObj1: testObj1,
+          testObj2: testObj2,
+          testObj3: testObj3
+        },
+        text: 'Testing Log',
+        type: 'log'
       });
-      this.$unicornLog({
-        text: 'hello world B',
-        logPrefix: true,
-        // magical: 'rainbow',
-        styles: false,
-        type: 'debug',
-        // objects: { internalObject },
-        // objects: 'string',
-        objects: {
-          testObj: testObj,
-          testObjTwo: testObjTwo,
-          internalObject: internalObject
-        } // array: { testObj, testObjTwo, internalObject },
-        // array: [this.testObj, this.testObjTwo, internalObject],
-        // array: ['foo', 'bar'],
-        // array: [
-        // 	{ foo: 'bar' },
-        // ],
-        // objects: ['foo', 'bar'],
-        // objects: '20',
-        // objects: [this.testObj, this.testObjTwo, internalObject],
-
-      }); // this.$unicornLog({
-      // 	// type: 'clear',
-      // });
-      // this.$unicornLog({
-      // 	type: 'countReset',
-      // 	text: 'Some Group',
-      // 	// array: [
-      // 	// 	{ foo: 'bar' },
-      // 	// 	{ foo: 'moo' },
-      // 	// 	{ foo: 'derp' },
-      // 	// ],
-      // });
-      // this.$unicornLog({
-      // 	type: 'log',
-      // 	text: 'hi',
-      // });
-      // this.$unicornLog({
-      // 	type: 'log',
-      // 	text: 'hi',
-      // });
-      // this.$unicornLog({
-      // 	type: 'log',
-      // 	text: 'hi',
-      // });
-      // this.$unicornLog({
-      // 	type: 'groupEnd',
-      // 	text: 'Some Group',
-      // });
     },
     welcomeLog: function welcomeLog() {
       this.$unicornLog({
@@ -2513,10 +2445,10 @@ var UnicornLog = {
       if (styles === false) {
         styles = '';
       } // If styles should be magical AF //
-      else if (options.type === 'log' && (UnicornLog.magicalStyleNames.includes(options.styles) || options.magical)) {
+      else if ((options.type === 'log' || options.type === 'info') && (UnicornLog.magicalStyleNames.includes(options.styles) || options.magical)) {
         styles = UnicornLog.defaultStyles.goNuts.join(';');
       } // Styles for info method //
-      else if (options.type === 'info') {
+      else if ((styles === '' || styles === true) && options.type === 'info') {
         styles = UnicornLog.defaultStyles.info.join(';');
       } // Default styles //
       else {
@@ -2551,7 +2483,6 @@ var UnicornLog = {
     }
   },
   // ========================================== Console Output //
-  // console.dir() //
   consoleDir: function consoleDir() {
     var value = {};
 
@@ -2706,7 +2637,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_node_modules_vue_code_highlight_themes_prism_tomorrow_css__WEBPACK_IMPORTED_MODULE_2__["default"]);
 ___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_node_modules_vue_code_highlight_themes_window_css__WEBPACK_IMPORTED_MODULE_3__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html {\n  scroll-padding-top: 70px;\n}\nh1 {\n  font-family: \"Henny Penny\", cursive;\n  font-weight: bold;\n  font-size: 3em;\n}\nh2 {\n  font-family: \"Indie Flower\", cursive;\n}\nh2::after {\n  content: \" \";\n  background-image: linear-gradient(to right, red, #ffa600, yellow, lime, aqua, blue, fuchsia, red);\n  border-radius: 5px;\n  display: block;\n  height: 2px;\n}\n.table tbody td pre {\n  background-color: #fafafa !important;\n  border-radius: 5px;\n  padding: 1rem;\n  tab-size: 2;\n}\n.option-type {\n  color: #7b1fa2 !important;\n  font-weight: 500;\n}\n.boolean-style {\n  color: #00f !important;\n  font-weight: 500;\n}\n.rainbow-text {\n  -webkit-background-clip: text;\n  -webkit-text-fill-color: transparent;\n  background-clip: text;\n  background-image: linear-gradient(to right, red, #ffa600, yellow, lime, aqua, blue, fuchsia, red);\n  border-radius: 5px;\n  color: transparent;\n  display: inline-block;\n  font-weight: bold;\n  height: 60px;\n  text-shadow: 0 2px 3px rgba(255, 255, 255, 0.3), 0 -1px 2px rgba(0, 0, 0, 0.2);\n}\n.rainbow-border {\n  background-color: black;\n  border-image: linear-gradient(to right, red, #ffa600, yellow, lime, aqua, blue, fuchsia, red) 1;\n  border-style: solid;\n  border-width: 4px;\n  padding: 2rem;\n}", "",{"version":3,"sources":["webpack://./docs/UnicornLog.vue","webpack://./../UnicornLog.vue"],"names":[],"mappings":"AA6rBA;EACC,wBAAA;AC1rBD;AD6rBA;EACC,mCAAA;EACA,iBAAA;EACA,cAAA;AC1rBD;AD6rBA;EACC,oCAAA;AC1rBD;AD4rBC;EACC,YAAA;EACA,iGA3BiB;EA4BjB,kBAAA;EACA,cAAA;EACA,WAAA;AC1rBF;ADisBG;EACC,oCAAA;EACA,kBAAA;EACA,aAAA;EACA,WAAA;AC9rBJ;ADosBA;EACC,yBAAA;EACA,gBAAA;ACjsBD;ADosBA;EACC,sBAAA;EACA,gBAAA;ACjsBD;ADosBA;EACC,6BAAA;EACA,oCAAA;EACA,qBAAA;EACA,iGA7DkB;EA8DlB,kBAAA;EACA,kBAAA;EACA,qBAAA;EACA,iBAAA;EACA,YAAA;EACA,8EAAA;ACjsBD;ADosBA;EACC,uBAAA;EACA,+FAAA;EACA,mBAAA;EACA,iBAAA;EACA,aAAA;ACjsBD","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n@import 'vue-code-highlight/themes/prism-tomorrow.css';\n@import 'vue-code-highlight/themes/window.css';\n\n$rainbow-gradient: linear-gradient(\n\tto right,\n\thsl(0, 100%, 50%),\n\thsl(39, 100%, 50%),\n\thsl(60, 100%, 50%),\n\thsl(120, 100%, 50%),\n\thsl(180, 100%, 50%),\n\thsl(240, 100%, 50%),\n\thsl(300, 100%, 50%),\n\thsl(0, 100%, 50%)\n);\n\nhtml {\n\tscroll-padding-top: 70px;\n}\n\nh1 {\n\tfont-family: 'Henny Penny', cursive;\n\tfont-weight: bold;\n\tfont-size: 3em;\n}\n\nh2 {\n\tfont-family: 'Indie Flower', cursive;\n\n\t&::after {\n\t\tcontent: ' ';\n\t\tbackground-image: $rainbow-gradient;\n\t\tborder-radius: 5px;\n\t\tdisplay: block;\n\t\theight: 2px;\n\t}\n}\n\n.table {\n\ttbody {\n\t\ttd {\n\t\t\tpre {\n\t\t\t\tbackground-color: #fafafa !important;\n\t\t\t\tborder-radius: 5px;\n\t\t\t\tpadding: 1rem;\n\t\t\t\ttab-size: 2;\n\t\t\t}\n\t\t}\n\t}\n}\n\n.option-type {\n\tcolor: #7b1fa2 !important;\n\tfont-weight: 500;\n}\n\n.boolean-style {\n\tcolor: #00f !important;\n\tfont-weight: 500;\n}\n\n.rainbow-text {\n\t-webkit-background-clip: text;\n\t-webkit-text-fill-color: transparent;\n\tbackground-clip: text;\n\tbackground-image: $rainbow-gradient;\n\tborder-radius: 5px;\n\tcolor: transparent;\n\tdisplay: inline-block;\n\tfont-weight: bold;\n\theight: 60px;\n\ttext-shadow: 0 2px 3px rgba(255, 255, 255, 0.3), 0 -1px 2px rgba(0, 0, 0, 0.2);\n}\n\n.rainbow-border {\n\tbackground-color: black;\n\tborder-image: $rainbow-gradient 1;\n\tborder-style: solid;\n\tborder-width: 4px;\n\tpadding: 2rem;\n}\n","@import 'vue-code-highlight/themes/prism-tomorrow.css';\n@import 'vue-code-highlight/themes/window.css';\nhtml {\n  scroll-padding-top: 70px;\n}\n\nh1 {\n  font-family: \"Henny Penny\", cursive;\n  font-weight: bold;\n  font-size: 3em;\n}\n\nh2 {\n  font-family: \"Indie Flower\", cursive;\n}\nh2::after {\n  content: \" \";\n  background-image: linear-gradient(to right, red, #ffa600, yellow, lime, aqua, blue, fuchsia, red);\n  border-radius: 5px;\n  display: block;\n  height: 2px;\n}\n\n.table tbody td pre {\n  background-color: #fafafa !important;\n  border-radius: 5px;\n  padding: 1rem;\n  tab-size: 2;\n}\n\n.option-type {\n  color: #7b1fa2 !important;\n  font-weight: 500;\n}\n\n.boolean-style {\n  color: #00f !important;\n  font-weight: 500;\n}\n\n.rainbow-text {\n  -webkit-background-clip: text;\n  -webkit-text-fill-color: transparent;\n  background-clip: text;\n  background-image: linear-gradient(to right, red, #ffa600, yellow, lime, aqua, blue, fuchsia, red);\n  border-radius: 5px;\n  color: transparent;\n  display: inline-block;\n  font-weight: bold;\n  height: 60px;\n  text-shadow: 0 2px 3px rgba(255, 255, 255, 0.3), 0 -1px 2px rgba(0, 0, 0, 0.2);\n}\n\n.rainbow-border {\n  background-color: black;\n  border-image: linear-gradient(to right, red, #ffa600, yellow, lime, aqua, blue, fuchsia, red) 1;\n  border-style: solid;\n  border-width: 4px;\n  padding: 2rem;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "html {\n  scroll-padding-top: 70px;\n}\nh1 {\n  font-family: \"Henny Penny\", cursive;\n  font-weight: bold;\n  font-size: 3em;\n}\nh2 {\n  font-family: \"Indie Flower\", cursive;\n}\nh2::after {\n  content: \" \";\n  background-image: linear-gradient(to right, red, #ffa600, yellow, lime, aqua, blue, fuchsia, red);\n  border-radius: 5px;\n  display: block;\n  height: 2px;\n}\n.table tbody td pre {\n  background-color: #fafafa !important;\n  border-radius: 5px;\n  padding: 1rem;\n  tab-size: 2;\n}\n.option-type {\n  color: #7b1fa3 !important;\n  font-weight: 500;\n}\n.boolean-style {\n  color: blue !important;\n  font-weight: 500;\n}\n.rainbow-text {\n  -webkit-background-clip: text;\n  -webkit-text-fill-color: transparent;\n  background-clip: text;\n  background-image: linear-gradient(to right, red, #ffa600, yellow, lime, aqua, blue, fuchsia, red);\n  border-radius: 5px;\n  color: transparent;\n  display: inline-block;\n  font-weight: bold;\n  height: 100%;\n  text-shadow: 0 2px 3px rgba(255, 255, 255, 0.3), 0 -1px 2px rgba(0, 0, 0, 0.2);\n}\n.rainbow-border {\n  background-color: #000;\n  border-image: linear-gradient(to right, red, #ffa600, yellow, lime, aqua, blue, fuchsia, red) 1;\n  border-style: solid;\n  border-width: 4px;\n  padding: 2rem;\n}", "",{"version":3,"sources":["webpack://./docs/UnicornLog.vue","webpack://./../UnicornLog.vue"],"names":[],"mappings":"AAgnBA;EACC,wBAAA;AC7mBD;ADgnBA;EACC,mCAAA;EACA,iBAAA;EACA,cAAA;AC7mBD;ADgnBA;EACC,oCAAA;AC7mBD;AD+mBC;EACC,YAAA;EACA,iGA3BiB;EA4BjB,kBAAA;EACA,cAAA;EACA,WAAA;AC7mBF;ADonBG;EACC,oCAAA;EACA,kBAAA;EACA,aAAA;EACA,WAAA;ACjnBJ;ADunBA;EACC,yBAAA;EACA,gBAAA;ACpnBD;ADunBA;EACC,sBAAA;EACA,gBAAA;ACpnBD;ADunBA;EACC,6BAAA;EACA,oCAAA;EACA,qBAAA;EACA,iGA7DkB;EA8DlB,kBAAA;EACA,kBAAA;EACA,qBAAA;EACA,iBAAA;EACA,YAAA;EACA,8EAAA;ACpnBD;ADunBA;EACC,sBAAA;EACA,+FAAA;EACA,mBAAA;EACA,iBAAA;EACA,aAAA;ACpnBD","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n@import 'vue-code-highlight/themes/prism-tomorrow.css';\n@import 'vue-code-highlight/themes/window.css';\n\n$rainbow-gradient: linear-gradient(\n\tto right,\n\thsl(0, 100%, 50%),\n\thsl(39, 100%, 50%),\n\thsl(60, 100%, 50%),\n\thsl(120, 100%, 50%),\n\thsl(180, 100%, 50%),\n\thsl(240, 100%, 50%),\n\thsl(300, 100%, 50%),\n\thsl(0, 100%, 50%)\n);\n\nhtml {\n\tscroll-padding-top: 70px;\n}\n\nh1 {\n\tfont-family: 'Henny Penny', cursive;\n\tfont-weight: bold;\n\tfont-size: 3em;\n}\n\nh2 {\n\tfont-family: 'Indie Flower', cursive;\n\n\t&::after {\n\t\tcontent: ' ';\n\t\tbackground-image: $rainbow-gradient;\n\t\tborder-radius: 5px;\n\t\tdisplay: block;\n\t\theight: 2px;\n\t}\n}\n\n.table {\n\ttbody {\n\t\ttd {\n\t\t\tpre {\n\t\t\t\tbackground-color: #fafafa !important;\n\t\t\t\tborder-radius: 5px;\n\t\t\t\tpadding: 1rem;\n\t\t\t\ttab-size: 2;\n\t\t\t}\n\t\t}\n\t}\n}\n\n.option-type {\n\tcolor: hsl(282, 68%, 38%) !important;\n\tfont-weight: 500;\n}\n\n.boolean-style {\n\tcolor: hsl(240, 100%, 50%) !important;\n\tfont-weight: 500;\n}\n\n.rainbow-text {\n\t-webkit-background-clip: text;\n\t-webkit-text-fill-color: transparent;\n\tbackground-clip: text;\n\tbackground-image: $rainbow-gradient;\n\tborder-radius: 5px;\n\tcolor: transparent;\n\tdisplay: inline-block;\n\tfont-weight: bold;\n\theight: 100%;\n\ttext-shadow: 0 2px 3px rgba(255, 255, 255, 0.3), 0 -1px 2px rgba(0, 0, 0, 0.2);\n}\n\n.rainbow-border {\n\tbackground-color: #000;\n\tborder-image: $rainbow-gradient 1;\n\tborder-style: solid;\n\tborder-width: 4px;\n\tpadding: 2rem;\n}\n","@import 'vue-code-highlight/themes/prism-tomorrow.css';\n@import 'vue-code-highlight/themes/window.css';\nhtml {\n  scroll-padding-top: 70px;\n}\n\nh1 {\n  font-family: \"Henny Penny\", cursive;\n  font-weight: bold;\n  font-size: 3em;\n}\n\nh2 {\n  font-family: \"Indie Flower\", cursive;\n}\nh2::after {\n  content: \" \";\n  background-image: linear-gradient(to right, red, #ffa600, yellow, lime, aqua, blue, fuchsia, red);\n  border-radius: 5px;\n  display: block;\n  height: 2px;\n}\n\n.table tbody td pre {\n  background-color: #fafafa !important;\n  border-radius: 5px;\n  padding: 1rem;\n  tab-size: 2;\n}\n\n.option-type {\n  color: #7b1fa3 !important;\n  font-weight: 500;\n}\n\n.boolean-style {\n  color: blue !important;\n  font-weight: 500;\n}\n\n.rainbow-text {\n  -webkit-background-clip: text;\n  -webkit-text-fill-color: transparent;\n  background-clip: text;\n  background-image: linear-gradient(to right, red, #ffa600, yellow, lime, aqua, blue, fuchsia, red);\n  border-radius: 5px;\n  color: transparent;\n  display: inline-block;\n  font-weight: bold;\n  height: 100%;\n  text-shadow: 0 2px 3px rgba(255, 255, 255, 0.3), 0 -1px 2px rgba(0, 0, 0, 0.2);\n}\n\n.rainbow-border {\n  background-color: #000;\n  border-image: linear-gradient(to right, red, #ffa600, yellow, lime, aqua, blue, fuchsia, red) 1;\n  border-style: solid;\n  border-width: 4px;\n  padding: 2rem;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -8167,9 +8098,11 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-xl-8 col-lg-12" }, [
-          _c("a", { attrs: { href: "https://vuejs.org/", target: "_blank" } }, [
-            _vm._v("Vue"),
-          ]),
+          _c(
+            "a",
+            { attrs: { href: "https://v2.vuejs.org/", target: "_blank" } },
+            [_vm._v("Vue 2")]
+          ),
         ]),
       ]
     )
@@ -19030,7 +18963,7 @@ module.exports = "data:image/svg+xml;utf8, <svg xmlns=\"http://www.w3.org/2000/s
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "512ee2008092eb892a65"; }
+/******/ 		__webpack_require__.h = function() { return "30f789783f162963e5cd"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
