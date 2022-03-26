@@ -215,11 +215,11 @@ const UnicornLog = {
 			}
 
 			// If styles should be magical AF //
-			else if (options.type === 'log' && (UnicornLog.magicalStyleNames.includes(options.styles) || options.magical)) {
+			else if ((options.type === 'log' || options.type === 'info') && (UnicornLog.magicalStyleNames.includes(options.styles) || options.magical)) {
 				styles = UnicornLog.defaultStyles.goNuts.join(';');
 			}
 			// Styles for info method //
-			else if (options.type === 'info') {
+			else if ((styles === '' || styles === true) && options.type === 'info') {
 				styles = UnicornLog.defaultStyles.info.join(';');
 			}
 			// Default styles //
@@ -256,8 +256,6 @@ const UnicornLog = {
 	},
 
 	// ========================================== Console Output //
-
-	// console.dir() //
 	consoleDir() {
 		const value = {};
 

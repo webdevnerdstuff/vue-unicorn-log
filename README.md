@@ -58,7 +58,7 @@ For more examples, see [Documentation & Examples](https://webdevnerdstuff.github
 
 ## Dependencies
 
-[Vue](https://vuejs.org/)
+[Vue 2](https://v2.vuejs.org/)
 
 
 ## Change Log

@@ -410,7 +410,7 @@ Vue.use(UnicornLog, {
 				</div>
 
 				<div class="col-xl-8 col-lg-12">
-					<a href="https://vuejs.org/" target="_blank">Vue</a>
+					<a href="https://v2.vuejs.org/" target="_blank">Vue 2</a>
 				</div>
 			</div>
 
@@ -452,9 +452,12 @@ Vue.use(UnicornLog, {
 				</div>
 			</div>
 
-			<div class="row rainbow-border mb-5">
+			<div class="row mb-5">
 				<div class="col-12 text-center">
-					<h1 class="rainbow-text mb-0">Vue Unicorn Log</h1>
+					<img
+						src="/images/vue-unicorn-log-social.jpg"
+						alt="Vue Unicorn Log by @WebDevNerdStuff"
+					/>
 				</div>
 			</div>
 		</div>
@@ -495,11 +498,6 @@ export default {
 		VueCodeHighlight,
 	},
 	data: () => ({
-		examples: {
-			log: {
-				text: 'Hello World',
-			},
-		},
 		copy: {
 			array: 'Used to include an array in the log.',
 			defaultStyles: 'Used to adjust the default styles.',
@@ -550,116 +548,44 @@ export default {
 			hsl(300, 100%, 50%),
 			hsl(360, 100%, 50%)
 		)`,
-		testObj: {
-			foo: 'foo',
-			bar: 'bar',
-		},
-		testObjTwo: {
-			fooTwo: 'fooTwo',
-			barTwo: 'barTwo',
-		},
+		testArrays: [
+			['foo', 'bar'],
+			['bar', 'foo'],
+		],
+		testObjects: [
+			{
+				foo: 'foo',
+				bar: 'bar',
+			},
+			{
+				fooTwo: 'fooTwo',
+				barTwo: 'barTwo',
+			},
+		],
 	}),
 	mounted() {
 		this.welcomeLog();
 		// this.testingLogs();
 	},
 	methods: {
-		exampleTextOption() {
-			this.$unicornLog({
-				text: this.examples.log.text,
-			});
-		},
 		testingLogs() {
-			const internalObject = {
-				internalFoo: 'internalFoo',
-				internalBar: 'internalBar',
+			const testArray1 = this.testArrays[0];
+			const testArray2 = this.testArrays[1];
+			const testArray3 = ['foobar'];
+			const testObj1 = this.testObjects[0];
+			const testObj2 = this.testObjects[1];
+			const testObj3 = {
+				barThree: 'barThree',
+				fooThree: 'fooThree',
 			};
 
-			const testObj = this.testObj;
-			const testObjTwo = this.testObjTwo;
-
-			// this.$unicornLog({
-			// 	text: 'hello world A',
-			// 	logPrefix: true,
-			// 	type: 'log',
-			// 	// styles: 'trippy',
-			// 	// styles: 'background: #000; color: #fff; padding: 10px;',
-			// 	// styles: 'rainbow',
-			// 	// magical: true,
-			// 	// styles: false,
-			// 	// type: 'dir',
-			// 	objects: { internalObject },
-			// 	// objects: 'string',
-			// 	// objects: { testObj, testObjTwo, internalObject },
-			// 	// array: { testObj, testObjTwo, internalObject },
-			// 	// array: ['foo', 'bar'],
-			// 	// array: [
-			// 	// 	{ foo: 'bar' },
-			// 	// ],
-			// 	// objects: ['foo', 'bar'],
-			// 	// objects: '20',
-			// 	// objects: [this.testObj, this.testObjTwo, internalObject],
-			// });
-
 			this.$unicornLog({
-				text: 'test',
+				array: [...testArray1, ...testArray2, testArray3],
 				logPrefix: true,
-				magical: 'rainbow',
-				styles: true,
+				objects: { testObj1, testObj2, testObj3 },
+				text: 'Testing Log',
 				type: 'log',
-				objects: { testObj, testObjTwo, internalObject },
 			});
-
-			this.$unicornLog({
-				text: 'hello world B',
-				logPrefix: true,
-				// magical: 'rainbow',
-				styles: false,
-				type: 'debug',
-				// objects: { internalObject },
-				// objects: 'string',
-				objects: { testObj, testObjTwo, internalObject },
-				// array: { testObj, testObjTwo, internalObject },
-				// array: [this.testObj, this.testObjTwo, internalObject],
-				// array: ['foo', 'bar'],
-				// array: [
-				// 	{ foo: 'bar' },
-				// ],
-				// objects: ['foo', 'bar'],
-				// objects: '20',
-				// objects: [this.testObj, this.testObjTwo, internalObject],
-			});
-
-			// this.$unicornLog({
-			// 	// type: 'clear',
-			// });
-
-			// this.$unicornLog({
-			// 	type: 'countReset',
-			// 	text: 'Some Group',
-			// 	// array: [
-			// 	// 	{ foo: 'bar' },
-			// 	// 	{ foo: 'moo' },
-			// 	// 	{ foo: 'derp' },
-			// 	// ],
-			// });
-
-			// this.$unicornLog({
-			// 	type: 'log',
-			// 	text: 'hi',
-			// });
-			// this.$unicornLog({
-			// 	type: 'log',
-			// 	text: 'hi',
-			// });
-			// this.$unicornLog({
-			// 	type: 'log',
-			// 	text: 'hi',
-			// });
-			// this.$unicornLog({
-			// 	type: 'groupEnd',
-			// 	text: 'Some Group',
-			// });
 		},
 		welcomeLog() {
 			this.$unicornLog({
@@ -735,12 +661,12 @@ h2 {
 }
 
 .option-type {
-	color: #7b1fa2 !important;
+	color: hsl(282, 68%, 38%) !important;
 	font-weight: 500;
 }
 
 .boolean-style {
-	color: #00f !important;
+	color: hsl(240, 100%, 50%) !important;
 	font-weight: 500;
 }
 
@@ -753,12 +679,12 @@ h2 {
 	color: transparent;
 	display: inline-block;
 	font-weight: bold;
-	height: 60px;
+	height: 100%;
 	text-shadow: 0 2px 3px rgba(255, 255, 255, 0.3), 0 -1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .rainbow-border {
-	background-color: black;
+	background-color: #000;
 	border-image: $rainbow-gradient 1;
 	border-style: solid;
 	border-width: 4px;

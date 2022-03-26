@@ -145,7 +145,7 @@ export default {
 		VueCodeHighlight,
 	},
 	data: () => ({
-		defaultStyles: 'color: red;',
+		defaultStyles: 'color: DeepPink; font-size: 2rem;',
 		magicalWord: 'unicorn',
 		magicalWords: [
 			'magic',
