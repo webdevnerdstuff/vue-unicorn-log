@@ -457,6 +457,7 @@ Vue.use(UnicornLog, {
 					<img
 						src="images/vue-unicorn-log-social.jpg"
 						alt="Vue Unicorn Log by @WebDevNerdStuff"
+						class="img-fluid"
 					/>
 				</div>
 			</div>
