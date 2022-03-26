@@ -455,7 +455,7 @@ Vue.use(UnicornLog, {
 			<div class="row mb-5">
 				<div class="col-12 text-center">
 					<img
-						src="/images/vue-unicorn-log-social.jpg"
+						src="images/vue-unicorn-log-social.jpg"
 						alt="Vue Unicorn Log by @WebDevNerdStuff"
 					/>
 				</div>
