@@ -452,9 +452,12 @@ Vue.use(UnicornLog, {
 				</div>
 			</div>
 
-			<div class="row rainbow-border mb-5">
+			<div class="row mb-5">
 				<div class="col-12 text-center">
-					<h1 class="rainbow-text mb-0">Vue Unicorn Log</h1>
+					<img
+						src="/images/vue-unicorn-log-social.jpg"
+						alt="Vue Unicorn Log by @WebDevNerdStuff"
+					/>
 				</div>
 			</div>
 		</div>

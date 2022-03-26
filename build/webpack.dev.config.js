@@ -1,12 +1,14 @@
 const { merge } = require('webpack-merge');
-const path = require('path');
-const sass = require('sass');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const path = require('path');
+const sass = require('sass');
 const webpack = require('webpack');
 const base = require('./webpack.base.config');
+const packageJson = require('../package.json');
 
 const devServerPort = 8080;
 
@@ -68,17 +70,6 @@ const stylelintOptions = {
 
 /*
  |--------------------------------------------------------------------------
- | HtmlWebpackPlugin Options
- |--------------------------------------------------------------------------
- */
-const htmlWebpackOptions = {
-	inject: 'body',
-	template: '../src/templates/index.html',
-	title: 'Vue Unicorn Log',
-};
-
-/*
- |--------------------------------------------------------------------------
  | BrowserSyncPlugin Options
  |--------------------------------------------------------------------------
  */
@@ -100,6 +91,44 @@ const browserSyncOptions = {
 				return `<script src="${src}" async></script>${match}`;
 			},
 		},
+	},
+};
+
+/*
+ |--------------------------------------------------------------------------
+ | HtmlWebpackPlugin Options
+ |--------------------------------------------------------------------------
+ */
+const packageTitle = 'Vue Unicorn Log';
+
+const htmlWebpackOptions = {
+	inject: 'body',
+	template: './templates/index.html',
+	title: packageTitle,
+	minify: true,
+	hash: true,
+	meta: {
+		// meta //
+		base: 'https://webdevnerdstuff.github.io/vue-unicorn-log/',
+		charset: 'utf-8',
+		viewport: 'width=device-width, initial-scale=1',
+		keywords: packageJson.keywords.join(', '),
+		description: packageJson.description,
+		author: packageJson.author,
+		robots: 'index, follow',
+		googlebot: 'index, follow',
+		rating: 'General',
+		'theme-color': '#21252a',
+		// Facebook Social //
+		'og:type': 'website',
+		'og:title': packageTitle,
+		'og:image': 'https://webdevnerdstuff.github.io/vue-unicorn-log/images/vue-unicorn-log-social.jpg',
+		'og:image:alt': packageJson.description,
+		'og:image:width': '1200',
+		'og:image:height': '630',
+		'og:description': packageJson.description,
+		'og:site_name': packageTitle,
+		'og:locale': 'en_US',
 	},
 };
 
@@ -128,6 +157,19 @@ module.exports = merge(base, {
 		path: path.resolve(__dirname, '../docs'),
 		publicPath: '',
 	},
+	optimization: {
+		minimize: true,
+		minimizer: [
+			new TerserPlugin({
+				terserOptions: {
+					format: {
+						comments: false,
+					},
+				},
+				extractComments: false,
+			}),
+		],
+	},
 	context: path.join(__dirname, '../src'),
 	devServer: {
 		client: {
@@ -145,7 +187,7 @@ module.exports = merge(base, {
 		hot: false,
 		static: path.join(__dirname, '../docs'),
 	},
-	devtool: 'source-map',
+	devtool: 'inline-source-map',
 	module: {
 		rules: [
 			scssRule,
