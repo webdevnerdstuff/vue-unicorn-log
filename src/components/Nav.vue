@@ -1,7 +1,7 @@
 <template>
 	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark mb-5">
 		<div class="container">
-			<a class="navbar-brand" href="/">🦄 Vue UnicornLog</a>
+			<a class="navbar-brand" :href="links.docs">🦄 Vue UnicornLog</a>
 			<button
 				class="navbar-toggler"
 				type="button"
@@ -16,7 +16,9 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/">Home</a>
+						<a class="nav-link active" aria-current="page" :href="links.docs">
+							Home
+						</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a
@@ -149,8 +151,9 @@ export default {
 	name: 'Nav',
 	data: () => ({
 		links: {
+			docs: 'https://webdevnerdstuff.github.io/vue-unicorn-log/',
 			github: 'https://github.com/webdevnerdstuff/vue-unicorn-log',
-			npm: 'https://github.com/webdevnerdstuff/vue-unicorn-log',
+			npm: 'https://www.npmjs.com/package/vue-unicorn-log',
 		},
 	}),
 };
