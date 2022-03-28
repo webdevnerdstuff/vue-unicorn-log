@@ -1,6 +1,6 @@
 {
 	"name": "vue-unicorn-log",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "A magical 🦄 plugin to make coloring the console output easier and more flexible.",
 	"private": false,
 	"main": "dist/vue-unicorn-log.js",
