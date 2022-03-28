@@ -1,6 +1,6 @@
 {
 	"name": "vue-unicorn-log",
-	"version": "1.0.1",
+	"version": "1.0.3",
 	"description": "A magical 🦄 plugin to make coloring the console output easier and more flexible.",
 	"private": false,
 	"main": "dist/vue-unicorn-log.js",
@@ -48,8 +48,6 @@
 		"wdns"
 	],
 	"dependencies": {
-		"cross-env": "^7.0.3",
-		"dotenv": "^16.0.0",
 		"vue": "^2.6.12",
 		"vue-code-highlight": "^0.7.8"
 	},
@@ -66,7 +64,9 @@
 		"babel-plugin-module-resolver": "^4.1.0",
 		"browser-sync": "^2.27.9",
 		"browser-sync-webpack-plugin": "^2.3.0",
+		"cross-env": "^7.0.3",
 		"css-loader": "^6.7.1",
+		"dotenv": "^16.0.0",
 		"eslint": "^7.25.0",
 		"eslint-config-airbnb-base": "^14.2.1",
 		"eslint-import-resolver-alias": "^1.1.2",
