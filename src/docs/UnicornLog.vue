@@ -49,7 +49,7 @@
 				<div class="col-xl-8 col-lg-12">
 					<vue-code-highlight language="shell">
 						<pre>
-npm i -D vue-unicorn-log
+npm i vue-unicorn-log
 						</pre
 						>
 					</vue-code-highlight>

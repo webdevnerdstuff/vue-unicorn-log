@@ -14,7 +14,7 @@ It also has the ability to run the console functions depending on environment va
 ## Installation
  
 ```
-npm i -D vue-unicorn-log
+npm i vue-unicorn-log
 ```
 
 
