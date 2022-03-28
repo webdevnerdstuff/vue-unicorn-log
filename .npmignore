@@ -12,3 +12,5 @@ src/templates
 .prettierrc.js
 CHANGELOG.md
 CODE_OF_CONDUCT.md
+
+node_modules
