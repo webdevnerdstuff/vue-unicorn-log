@@ -1,6 +1,6 @@
 {
 	"name": "vue-unicorn-log",
-	"version": "1.0.4",
+	"version": "1.0.6",
 	"description": "A magical 🦄 plugin to make coloring the console output easier and more flexible.",
 	"private": false,
 	"main": "dist/vue-unicorn-log.js",
@@ -32,17 +32,19 @@
 	"bugs": {
 		"url": "https://github.com/webdevnerdstuff/vue-unicorn-log/issues"
 	},
-	"homepage": "https://github.com/webdevnerdstuff/vue-unicorn-log/",
+	"homepage": "https://webdevnerdstuff.github.io/vue-unicorn-log/",
 	"keywords": [
+		"vue-unicorn-log",
+		"unicorn-log",
 		"vue",
 		"vue2",
 		"plugin",
-		"javascript",
-		"logging",
-		"log",
 		"console",
 		"devtools",
 		"unicorn",
+		"logging",
+		"log",
+		"javascript",
 		"magical",
 		"webdevnerdstuff",
 		"wdns"

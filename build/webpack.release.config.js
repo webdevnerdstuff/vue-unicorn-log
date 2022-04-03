@@ -8,11 +8,6 @@ module.exports = merge(base, {
 		minimize: true,
 		minimizer: [
 			new TerserPlugin({
-				terserOptions: {
-					format: {
-						comments: false,
-					},
-				},
 				extractComments: false,
 			}),
 		],

@@ -11,8 +11,6 @@ const UnicornLog = {
 		// Set the Global options //
 		this.options = { ...this.options, ...options };
 
-		// console.log(this.options);
-
 		// Add an instance methods //
 		Magical.prototype.$unicornLog = function(logOptions) {
 			UnicornLogCore.init(Vue, UnicornLog.options, logOptions);
