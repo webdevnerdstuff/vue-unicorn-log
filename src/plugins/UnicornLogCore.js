@@ -1,13 +1,3 @@
-/**
- * Vue UnicornLog Plugin
- *
- * @author WebDevNerdStuff & Bunnies
- * @version 1.0.0
- * @copyright Copyright 2022, WebDevNerdStuff
- * @supports Magical Creatures
- *
- */
-
 /* eslint-disable no-console */
 const rainbowLinearGradient = `linear-gradient(to right,
 	hsl(0, 100%, 50%),
