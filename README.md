@@ -1,10 +1,27 @@
+<p align="center" style="font-size: 100px">
+  🦄
+</p>
 
-# 🦄 Vue Unicorn Log
+<p>
+  <h1 align="center">Vue Unicorn Log</h1>
+</p>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/vue-unicorn-log">
+    <img src="https://img.shields.io/npm/v/vue-unicorn-log?logo=npm" alt="NPM Package">
+  </a>
+  &nbsp;
+  <a href="https://github.com/webdevnerdstuff/vue-unicorn-log">
+    <img src="https://img.shields.io/badge/GitHub-WebDevNerdStuff-deeppink.svg?logo=github" alt="@WebDevNerdStuff">
+  </a>
+</p>
 
 
-[![NPM_PACKAGE](https://img.shields.io/badge/NPM%20-Package-%23cb3837)](https://www.npmjs.com/package/vue-unicorn-log)
+## Description
 
-### A magical 🦄 plugin to make coloring the console output easier and more flexible.
+<p>
+  <h3 align="center">A magical 🦄 plugin to make coloring the console output easier and more flexible.</h3>
+</p>
 
 Sometimes when building your application/site you don't want to see your linter complaining about using console functions. This helps to keep your linter happy so you can concentrate on writing bug free magical code.
 
@@ -13,11 +30,16 @@ It also has the ability to run the console functions depending on environment va
 
 ## Installation
  
+Using [pnpm](https://pnpm.io/):
+```
+pnpm add vue-unicorn-log
+```
+ 
+ Using npm:
 ```
 npm i vue-unicorn-log
 ```
-
-
+ 
 ## Documentation & Examples
  
 [Documentation & Examples](https://webdevnerdstuff.github.io/vue-unicorn-log/)
