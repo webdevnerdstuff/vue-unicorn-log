@@ -1,5 +1,5 @@
-<p align="center" style="font-size: 100px">
-  🦄
+<p align="center">
+  <img alt="Neon Bunny" width="256" src="https://github.com/webdevnerdstuff/vue-unicorn-log/raw/main/docs/images/unicorn.svg">
 </p>
 
 <p>
