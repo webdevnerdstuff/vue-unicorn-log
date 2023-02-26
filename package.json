@@ -5,12 +5,12 @@
 	"private": false,
 	"main": "dist/vue-unicorn-log.js",
 	"scripts": {
-		"serve": "npm run development",
-		"watch": "npm run development",
-		"dev": "npm run development",
+		"serve": "pnpm development",
+		"watch": "pnpm development",
+		"dev": "pnpm development",
 		"development": "cross-env NODE_ENV=development webpack serve --config ./build/webpack.dev.config.js",
 		"build:release": "webpack --config ./build/webpack.release.config.js --progress",
-		"build": "npm run build:release"
+		"build": "pnpm build:release"
 	},
 	"author": "WebDevNerdStuff & Bunnies... lots and lots of bunnies! <webdevnerdstuff@gmail.com> (https://webdevnerdstuff.com)",
 	"funding": [
