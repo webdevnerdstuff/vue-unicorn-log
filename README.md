@@ -26,6 +26,8 @@
 Sometimes when building your application/site you don't want to see your linter complaining about using console functions. This helps to keep your linter happy so you can concentrate on writing bug free magical code.
 
 It also has the ability to run the console functions depending on environment variables so you can keep your production site's console quiet.
+ 
+Plugin version for Vue 3 can be found [here](https://github.com/webdevnerdstuff/vue3-unicorn-log).
 
 
 ## Installation
